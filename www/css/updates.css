@@ -1,4 +1,4 @@
-.row, .row *, .section-large, .section-large * {
+.row, .row *, .section-large, .section-large *, .sidebox-extended, .sidebox-extended * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -69,7 +69,7 @@
     color: #ac0d00;
 }
 
-.section-large .button {
+.section-large .button, .sidebox-extended .button {
     width: 100%;
     display: block;
     white-space: nowrap;
@@ -88,17 +88,17 @@
     font-weight: 300;
 }
 
-.section-large .button:visited {
+.section-large .button:visited, .sidebox-extended .button:visited {
     color: white;
 }
 
-.section-large .button:hover {
+.section-large .button:hover, .sidebox-extended .button:hover {
     color: white;
     background-color: #c35813;
     text-decoration: none;
 }
 
-.section-large .button:disabled {
+.section-large .button:disabled, .sidebox-extended .button:disabled {
     background-color: #e0cec2;
 }
 
@@ -387,6 +387,74 @@
 
 .action-link:hover {
     text-decoration: none;
+}
+
+.sidebox-extended {
+    margin-bottom: 25px;
+    background: url(/v_44/img/common/shadow.png) no-repeat 0px 34px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.sidebox-extended .header {
+    background-color: #f8f8f8;
+    height: 34px;
+    padding: 4px 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: #ff6400;
+    text-align: center;
+}
+
+.sidebox-extended .header h4 {
+    text-transform: uppercase;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 1px;
+    color: #FFF;
+}
+
+.sidebox-extended .header a {
+    color: #FFF;
+}
+
+.sidebox-extended .box {
+    border-left: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+}
+
+.sidebox-extended .content {
+    padding: 10px;
+}
+
+.sidebox-extended .footer {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    text-align: center;
+}
+
+.sidebox-extended .footer .button {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    padding: 5px 40px;
+}
+
+.bg-gray-light {
+    background-color: #f0f0f0;
+}
+
+.bg-gray-light a {
+    color: #ff5e08;
+}
+
+.bg-gray-medium {
+    background-color: #d8d8d8;
+}
+
+.pull-right {
+    float: right;
 }
 
 @media (max-width: 767px) {

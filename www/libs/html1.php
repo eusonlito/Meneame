@@ -882,16 +882,28 @@ function do_last_subs($status = 'published', $count = 10, $order = 'date') {
 
 // Print the "message" of the sub, if it exists
 function do_sub_message_right() {
-	global $db, $globals;
+	global $globals;
 
-	if ($globals['mobile'] || ! $globals['submnm']) return;
+	if ($globals['mobile'] || ! $globals['submnm']) {
+		return;
+	}
 
 	$properties = SitesMgr::get_extended_properties();
-	if (empty($properties['message'])) return;
+
+	if (empty($properties['message'])) {
+		return;
+	}
 
 	$properties['message_html'] = LCPBase::html($properties['message']);
-	Haanga::Load('message_right.html', array('self' => $properties));
-	return;
+
+	$site = SitesMgr::get_info();
+	$site->followers = SitesMgr::get_followers();
+
+	Haanga::Load('message_right.html', array(
+		'site' => $site,
+		'owner' => SitesMgr::get_owner(),
+		'self' => $properties
+	));
 }
 
 function do_subheader($content, $selected = false) {

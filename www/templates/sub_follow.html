@@ -1,10 +1,4 @@
-<a href="javascript:add_remove_sub('{{ id }}', 1)" style="margin:0 1px" id="follow_b_{{ id }}" class="action-link" title="{% trans _('suscripción al sub') %}"/>
+<a href="javascript:add_remove_sub('{{ id }}', 1)" style="margin:0 1px" class="action-link follow_b_{{ id }}" title="{% trans _('suscripción al sub') %}"/>
     <i class="fa fa-check-circle-o"></i>
     <span>{% trans _('Seguir') %}</span>
 </a>
-
-<script type="text/javascript">
-addPostCode(function () {
-	add_remove_sub('{{ id }}', 0);
-});
-</script>

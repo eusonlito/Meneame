@@ -1,11 +1,32 @@
-<div class="sidebox message"
-	style="
-		{% if self.box_color %}color: {{ self.box_color }}; {% endif %}
-		{% if self.box_background %}background-color: {{ self.box_background }}; {% endif %}
-		{% if self.box_bordercolor %}border-color: {{ self.box_bordercolor }}; {% endif %}
-	"
->
+<div class="sidebox-extended">
+    <div class="header">
+        <h4><a href="#">{{ site.name_long }}</a></h4>
+    </div>
 
-{{ self.message_html }}
+    <div class="box">
+        <div class="content">
+            {{ self.message_html }}
+        </div>
 
+        <div class="content bg-gray-light">
+            {% if not site.private %}
+            <strong>{% trans _('Admin') %} | <a href="{{ owner.user_login|useruri }}">{{ owner.user_login }}</a></strong>
+            {% endif %}
+
+            <strong class="pull-right">{{ site.followers }} {% trans _('seguidores') %}</strong>
+        </div>
+    </div>
+
+    <div class="footer content bg-gray-medium">
+        <a href="javascript:add_remove_sub('{{ site.id }}', 1)" class="button follow_b_{{ site.id }}" title="{% trans _('suscripción al sub') %}"/>
+            <i class="fa fa-check-circle-o"></i>
+            <span>{% trans _('Seguir') %}</span>
+        </a>
+
+        <script type="text/javascript">
+        addPostCode(function () {
+            add_remove_sub('{{ site.id }}', 0);
+        });
+        </script>
+    </div>
 </div>

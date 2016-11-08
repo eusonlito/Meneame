@@ -180,7 +180,7 @@
                 {% if this_site.nsfw %}[nsfw]{% endif %}
 
                 {% if this_site.owner > 0 && current_user.user_id > 0 && (current_user.admin || this_site.owner == current_user.user_id) %}
-                <a title="edit" href="{{ globals.base_url }}m/{{ this_site.name }}/subedit" class="action-link">
+                <a href="{{ globals.base_url }}m/{{ this_site.name }}/subedit" class="action-link" title="{% trans _('Editar') %}">
                     <i class="fa fa-pencil"></i>
                     {% trans _('Editar') %}
                 </a>

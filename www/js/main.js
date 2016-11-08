@@ -270,29 +270,27 @@ function add_remove_sub(id, change) {
 
 	change = (change ? 1 : 0);
 
-	$.post(url,
-		{ id: id, key: base_key, change: change },
-		function(data) {
-			if (data.error) {
-				mDialog.notify("{% trans _('Error:') %}" + data.error, 5);
-				return;
-			}
-
-			var $button = $('#follow_b_' + id),
-				$icon = $('.fa', $button),
-				$text = $('span', $button);
-
-			$icon.removeClass('fa-check-circle-o fa-times-circle-o');
-
-			if (data.value) {
-				$icon.addClass('fa-times-circle-o');
-				$text.html("{% trans _('Dejar de seguir') %}");
-			} else {
-				$icon.addClass('fa-check-circle-o');
-				$text.html("{% trans _('Seguir') %}");
-			}
+	$.post(url, { id: id, key: base_key, change: change }, function(data) {
+		if (data.error) {
+			mDialog.notify("{% trans _('Error:') %}" + data.error, 5);
+			return;
 		}
-	, "json");
+
+		var $button = $('.follow_b_' + id),
+			$icon = $('.fa', $button),
+			$text = $('span', $button);
+
+		$icon.removeClass('fa-check-circle-o fa-times-circle-o');
+
+		if (data.value) {
+			$icon.addClass('fa-times-circle-o');
+			$text.html("{% trans _('Dejar de seguir') %}");
+		} else {
+			$icon.addClass('fa-check-circle-o');
+			$text.html("{% trans _('Seguir') %}");
+		}
+	}, 'json');
+
 	reportAjaxStats('html', "sub_follow");
 }
 
