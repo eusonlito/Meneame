@@ -274,14 +274,22 @@ function add_remove_sub(id, change) {
 		{ id: id, key: base_key, change: change },
 		function(data) {
 			if (data.error) {
-				mDialog.notify("{% trans _('Error:') %}"+data.error, 5);
+				mDialog.notify("{% trans _('Error:') %}" + data.error, 5);
 				return;
 			}
-			$button = $('#follow_b_'+id);
+
+			var $button = $('#follow_b_' + id),
+				$icon = $('.fa', $button),
+				$text = $('span', $button);
+
+			$icon.removeClass('fa-check-circle-o fa-times-circle-o');
+
 			if (data.value) {
-				$button.addClass("on").removeClass("off");
+				$icon.addClass('fa-times-circle-o');
+				$text.html("{% trans _('Dejar de seguir') %}");
 			} else {
-				$button.addClass("off").removeClass("on");
+				$icon.addClass('fa-check-circle-o');
+				$text.html("{% trans _('Seguir') %}");
 			}
 		}
 	, "json");
@@ -391,13 +399,16 @@ function eraseCookie(name) {
 ** http://code.google.com/intl/es/apis/analytics/docs/eventTrackerOverview.html
 */
 function reportAjaxStats(category, action, url) {
-	if (typeof(ga) != 'undefined') {
-		if (category && action) {
-			ga('send', 'event', category, action);
-		}
-		if (typeof url == 'string') {
-			ga('send', 'pageview', url);
-		}
+	if (typeof ga === 'undefined') {
+		return;
+	}
+
+	if (category && action) {
+		ga('send', 'event', category, action);
+	}
+
+	if (typeof url === 'string') {
+		ga('send', 'pageview', url);
 	}
 }
 

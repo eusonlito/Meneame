@@ -1,5 +1,4 @@
-
-.row, .row *, .section-large, .section-large *, .section-large .form, .section-large .form * {
+.row, .row *, .section-large, .section-large * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -368,6 +367,26 @@
 
 .g-recaptcha > div {
     margin: 40px auto;
+}
+
+.action-link {
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 1px 6px;
+    text-transform: uppercase;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.action-link .fa {
+    font-size: 15px;
+    margin-right: 4px;
+}
+
+.action-link:hover {
+    text-decoration: none;
 }
 
 @media (max-width: 767px) {
