@@ -412,7 +412,7 @@
 }
 
 .sidebox-extended .header {
-    background-color: #f8f8f8;
+    background-color: #FE6117;
     height: 34px;
     padding: 4px 20px;
     border-top-left-radius: 8px;
@@ -442,6 +442,12 @@
 
 .sidebox-extended .content {
     padding: 10px;
+    letter-spacing: -0.5px;
+    font-size: 14px;
+}
+
+.sidebox-extended .bg-gray-light {
+    font-weight: 600;
 }
 
 .sidebox-extended .footer {
@@ -455,6 +461,19 @@
     width: auto;
     margin: 0;
     padding: 5px 40px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.sidebox-extended .footer .button .fa {
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+.sidebox-extended .footer .button span {
+    vertical-align: middle;
+    font-weight: 600;
 }
 
 .sub-description {

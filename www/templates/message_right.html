@@ -12,10 +12,10 @@
 
         <div class="content bg-gray-light clearfix">
             {% if not site.private AND owner.user_id %}
-            <strong>{% trans _('Admin') %} | <a href="{{ owner.user_login|useruri }}">{{ owner.user_login }}</a></strong>
+            {% trans _('Admin') %} | <a href="{{ owner.user_login|useruri }}">{{ owner.user_login }}</a>
             {% endif %}
 
-            <strong class="pull-right">{{ site.followers }} {% trans _('seguidores') %}</strong>
+            <div class="pull-right">{{ site.followers }} {% trans _('seguidores') %}</div>
         </div>
     </div>
 
