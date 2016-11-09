@@ -161,10 +161,6 @@
                 <a href="{{ this_site.url }}" {% if this_site.color1 %}style="color:{{ this_site.color1 }}"{% endif %}>{{ this_site.name_long }}</a>
 
                 {% if this_site.nsfw %}[nsfw]{% endif %}
-
-                {% if this_site.sub %}
-                <a href="#" class="show-sub-description pull-right"><i class="fa fa-info-circle"></i></a>
-                {% endif %}
             </div>
 
             {% if this_site.sub %}
@@ -173,6 +169,11 @@
             </div>
 
             <div class="action-links">
+                <a href="#" class="show-sub-description action-link" title="{% trans _('Detalle') %}">
+                    <i class="fa fa-info-circle"></i>
+                    <span>{% trans _('Detalle') %}</span>
+                </a>
+
                 {% if this_site.owner > 0 && current_user.user_id > 0 && (current_user.admin || this_site.owner == current_user.user_id) %}
                 <a href="{{ globals.base_url }}m/{{ this_site.name }}/subedit" class="action-link" title="{% trans _('Editar') %}">
                     <i class="fa fa-pencil"></i>
