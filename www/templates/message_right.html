@@ -5,7 +5,7 @@
 
     <div class="box">
         <div class="content">
-            {{ self.message_html }}
+            {{ properties.message_html }}
         </div>
 
         <div class="content bg-gray-light">
@@ -18,6 +18,8 @@
     </div>
 
     <div class="footer content bg-gray-medium">
+        {% if user.user_id %}
+
         <a href="javascript:add_remove_sub('{{ site.id }}', 1)" class="button follow_b_{{ site.id }}" title="{% trans _('suscripción al sub') %}"/>
             <i class="fa fa-check-circle-o"></i>
             <span>{% trans _('Seguir') %}</span>
@@ -28,5 +30,14 @@
             add_remove_sub('{{ site.id }}', 0);
         });
         </script>
+
+        {% else %}
+
+        <a href="{{ globals.base_url_general }}login?return={{ globals.uri|urlencode }}" class="button" title="{% trans _('suscripción al sub') %}"/>
+            <i class="fa fa-check-circle-o"></i>
+            <span>{% trans _('Seguir') %}</span>
+        </a>
+
+        {% endif %}
     </div>
 </div>

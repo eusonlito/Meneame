@@ -882,7 +882,7 @@ function do_last_subs($status = 'published', $count = 10, $order = 'date') {
 
 // Print the "message" of the sub, if it exists
 function do_sub_message_right() {
-	global $globals;
+	global $globals, $current_user;
 
 	if ($globals['mobile'] || ! $globals['submnm']) {
 		return;
@@ -902,7 +902,8 @@ function do_sub_message_right() {
 	Haanga::Load('message_right.html', array(
 		'site' => $site,
 		'owner' => SitesMgr::get_owner(),
-		'self' => $properties
+		'properties' => $properties,
+		'user' => $current_user
 	));
 }
 
