@@ -457,6 +457,15 @@
     float: right;
 }
 
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: " ";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
 @media (max-width: 767px) {
     .section-large {
         margin-top: 20px;
