@@ -164,15 +164,20 @@
             </div>
 
             {% if this_site.sub %}
+
+            {% if this_site_properties.message %}
             <div class="sub-description hidden">
                 {{ this_site_properties.message_html }}
             </div>
+            {% endif %}
 
             <div class="action-links">
+                {% if this_site_properties.message %}
                 <a href="#" class="show-sub-description action-link" title="{% trans _('Detalle') %}">
                     <i class="fa fa-info-circle"></i>
                     <span>{% trans _('Detalle') %}</span>
                 </a>
+                {% endif %}
 
                 {% if this_site.owner > 0 && current_user.user_id > 0 && (current_user.admin || this_site.owner == current_user.user_id) %}
                 <a href="{{ globals.base_url }}m/{{ this_site.name }}/subedit" class="action-link" title="{% trans _('Editar') %}">
