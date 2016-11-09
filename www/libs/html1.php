@@ -931,8 +931,9 @@ function do_subheader($content, $selected = false) {
 function print_follow_sub($id) {
 	global $current_user;
 
-	if ($current_user->user_id) {
-		Haanga::Load('sub_follow.html', array('id' => $id));
-	}
+	Haanga::Load('sub_follow.html', array(
+		'id' => $id,
+		'user' => $current_user
+	));
 }
 
