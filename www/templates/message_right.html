@@ -4,12 +4,14 @@
     </div>
 
     <div class="box">
+        {% if properties.message %}
         <div class="content">
             {{ properties.message_html }}
         </div>
+        {% endif %}
 
         <div class="content bg-gray-light clearfix">
-            {% if not site.private %}
+            {% if not site.private AND owner.user_id %}
             <strong>{% trans _('Admin') %} | <a href="{{ owner.user_login|useruri }}">{{ owner.user_login }}</a></strong>
             {% endif %}
 

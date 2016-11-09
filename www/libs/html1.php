@@ -891,11 +891,6 @@ function do_sub_message_right() {
 	}
 
 	$properties = SitesMgr::get_extended_properties();
-
-	if (empty($properties['message'])) {
-		return;
-	}
-
 	$properties['message_html'] = LCPBase::html($properties['message']);
 
 	$site = SitesMgr::get_info();
