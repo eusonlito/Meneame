@@ -151,19 +151,41 @@
 
     <div id="header">
         {% if globals.mobile AND (this_site.sub OR this_site.logo_url) %}
-        <div id="header-sub" style="{% if this_site.color1 %}color:{{ this_site.color1 }};{% endif %}{% if this_site.color2 %}background-color:{{ this_site.color2 }}{% endif %}">
+        <div id="header-mobile">
+            <div id="header-sub" style="{% if this_site.color1 %}color:{{ this_site.color1 }};{% endif %}{% if this_site.color2 %}background-color:{{ this_site.color2 }}{% endif %}">
 
-            {% if this_site.logo_url %}
-                {% include 'header_sub_logo.html' %}
+                {% if this_site.logo_url %}
+                    {% include 'header_sub_logo.html' %}
+                {% endif %}
+
+                <a href="{{ this_site.url }}" {% if this_site.color1 %}style="color:{{ this_site.color1 }}"{% endif %}>{{ this_site.name_long }}</a>
+
+                {% if this_site.nsfw %}[nsfw]{% endif %}
+
+                {% if this_site.sub %}
+                <a href="#" class="show-sub-description pull-right"><i class="fa fa-info-circle"></i></a>
+                {% endif %}
+            </div>
+
+            {% if this_site.sub %}
+            <div class="sub-description hidden">
+                {{ this_site_properties.message_html }}
+            </div>
+
+            <div class="action-links">
+                {% if this_site.owner > 0 && current_user.user_id > 0 && (current_user.admin || this_site.owner == current_user.user_id) %}
+                <a href="{{ globals.base_url }}m/{{ this_site.name }}/subedit" class="action-link" title="{% trans _('Editar') %}">
+                    <i class="fa fa-pencil"></i>
+                    <span>{% trans _('Editar') %}</span>
+                </a>
+                {% endif %}
+
+                {% exec print_follow_sub this_site.id as dummy %}
+            </div>
             {% endif %}
-
-            <a href="{{ this_site.url }}" {% if this_site.color1 %}style="color:{{ this_site.color1 }}"{% endif %}>{{ this_site.name_long }}</a>
-
-            {% if this_site.nsfw %} [nsfw]{% endif %}
-
-            &nbsp;{% if this_site.sub %}{% exec print_follow_sub this_site.id as dummy %}{% endif %}
         </div>
-        {% endif %}
+
+        {% else %}
 
         <div id="header-center" style="{% if this_site.color1 %}color:{{ this_site.color1 }};{% endif %}{% if this_site.color2 %}background-color:{{ this_site.color2 }};{% endif %}">
             {% if ! this_site.logo_url && this_site.owner == 0 %}
@@ -182,7 +204,7 @@
                 {% if this_site.owner > 0 && current_user.user_id > 0 && (current_user.admin || this_site.owner == current_user.user_id) %}
                 <a href="{{ globals.base_url }}m/{{ this_site.name }}/subedit" class="action-link" title="{% trans _('Editar') %}">
                     <i class="fa fa-pencil"></i>
-                    {% trans _('Editar') %}
+                    <span>{% trans _('Editar') %}</span>
                 </a>
                 {% endif %}
 
@@ -217,6 +239,8 @@
                 </form>
             </div><!--end search-->
         </div><!--header-center-->
+
+        {% endif %}
 
         <div id="header-menu">
             <div class="header-menu01">

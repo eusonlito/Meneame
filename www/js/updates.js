@@ -1,5 +1,4 @@
-;(function ($){
-
+;(function($) {
     var $formRegister = $('#form-register');
 
     if ($formRegister.length) {
@@ -106,4 +105,16 @@
             $email.trigger('change');
         }
     }
+
+    $('.show-sub-description').on('click', function(e) {
+        e.preventDefault();
+
+        var $description = $('.sub-description');
+
+        if ($description.hasClass('hidden')) {
+            $description.hide().removeClass('hidden');
+        }
+
+        $description.slideToggle();
+    });
 })(jQuery);
