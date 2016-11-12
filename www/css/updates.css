@@ -128,6 +128,10 @@
     width: 25%;
 }
 
+.row-col-4 {
+    width: 33.33333333%;
+}
+
 .row-col-6 {
     width: 50%;
 }
@@ -369,7 +373,7 @@
     margin: 40px auto;
 }
 
-a.action-link {
+a.action-link, .action-text {
     display: inline-block;
     font-family: 'Open Sans', sans-serif;
     border: 1px solid white;
@@ -387,14 +391,15 @@ a.action-link:link, a.action-link:visited, q.action-link:hover {
     text-decoration: none;
 }
 
-#header-mobile a.action-link, #header-mobile a.action-link:link,
-#header-mobile a.action-link:hover, #header-mobile a.action-link:visited {
+.action-links a.action-link, .action-links .action-text, .action-links a.action-link:link,
+.action-links a.action-link:hover, .action-links a.action-link:visited {
     background: none;
-    color: #3c3c3c;
+    border: none;
+    color: #4A4A4A;
     text-decoration: none;
 }
 
-a.action-link .fa {
+a.action-link .fa, a.action-text .fa {
     font-size: 15px;
 }
 
@@ -402,13 +407,39 @@ a.action-link span {
     margin-left: 4px;
 }
 
-#header-mobile .action-links {
-    margin-top: 10px;
+.action-links {
+    background-image: linear-gradient(-90deg, #FBFBFB 0%, #F8F8F8 48%, #F4F4F4 100%);
+    border-bottom: 1px solid #d8d8d8;
+    padding: 8px;
     text-align: center;
+    font-weight: 600;
 }
 
-#header-mobile a.action-link span {
+.action-links .action-link .fa {
+    font-size: 13px;
+}
+
+.action-links .action-text {
+    color: #FD6014;
+}
+
+.action-links a.action-link span {
     display: inline;
+}
+
+#header-sub {
+    position: relative;
+}
+
+#header-mobile .edit {
+    position: absolute;
+    right: 0;
+    margin-top: -5px;
+    padding-top: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: #FE6117;
+    text-align: center;
 }
 
 .sidebox-extended {
@@ -500,6 +531,16 @@ a.action-link span {
     background-color: #d8d8d8;
 }
 
+.border-left {
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: 1px solid #dfdfdf;
+}
+
+.pull-left {
+    float: left;
+}
+
 .pull-right {
     float: right;
 }
@@ -555,7 +596,16 @@ a.action-link span {
         display: none;
     }
 
+    .action-links a.action-link, .action-links .action-text {
+        font-size: 11px;
+    }
+
     .separator {
         margin: 10px;
+    }
+
+    .border-left {
+        padding-left: 5px;
+        margin-left: 5px;
     }
 }

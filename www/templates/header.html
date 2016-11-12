@@ -154,7 +154,6 @@
 
         <div id="header-mobile">
             <div id="header-sub" style="{% if this_site.color1 %}color:{{ this_site.color1 }};{% endif %}{% if this_site.color2 %}background-color:{{ this_site.color2 }}{% endif %}">
-
                 {% if this_site.logo_url %}
                     {% include 'header_sub_logo.html' %}
                 {% endif %}
@@ -162,6 +161,12 @@
                 <a href="{{ this_site.url }}" {% if this_site.color1 %}style="color:{{ this_site.color1 }}"{% endif %}>{{ this_site.name_long }}</a>
 
                 {% if this_site.nsfw %}[nsfw]{% endif %}
+
+                {% if this_site.owner > 0 && current_user.user_id > 0 && (current_user.admin || this_site.owner == current_user.user_id) %}
+                <a href="{{ globals.base_url }}m/{{ this_site.name }}/subedit" class="edit" title="{% trans _('Editar') %}">
+                    <i class="fa fa-pencil"></i>
+                </a>
+                {% endif %}
             </div>
 
             {% if this_site.sub %}
@@ -172,22 +177,23 @@
             </div>
             {% endif %}
 
-            <div class="action-links">
-                {% if this_site_properties.message %}
-                <a href="#" class="show-sub-description action-link" title="{% trans _('Detalle') %}">
-                    <i class="fa fa-info-circle"></i>
-                    <span>{% trans _('Detalle') %}</span>
-                </a>
-                {% endif %}
+            <div class="action-links clearfix">
+                <div class="pull-left">
+                    <span class="action-text">{{ this_site.followers }} {% trans _('Seguidores') %}</span>
+                </div>
 
-                {% if this_site.owner > 0 && current_user.user_id > 0 && (current_user.admin || this_site.owner == current_user.user_id) %}
-                <a href="{{ globals.base_url }}m/{{ this_site.name }}/subedit" class="action-link" title="{% trans _('Editar') %}">
-                    <i class="fa fa-pencil"></i>
-                    <span>{% trans _('Editar') %}</span>
-                </a>
-                {% endif %}
+                <div class="pull-right border-left">
+                    {% if this_site_properties.message %}
+                    <a href="#" class="show-sub-description action-link" title="{% trans _('Más Info') %}">
+                        <i class="fa fa-info-circle"></i>
+                        <span>{% trans _('Más Info') %}</span>
+                    </a>
+                    {% endif %}
+                </div>
 
-                {% exec print_follow_sub this_site.id as dummy %}
+                <div class="pull-right">
+                    {% exec print_follow_sub this_site.id as dummy %}
+                </div>
             </div>
             {% endif %}
         </div>

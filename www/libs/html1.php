@@ -65,7 +65,6 @@ function do_header($title, $id='home', $options = false) {
 		header('Strict-Transport-Security: max-age=15638400'); // 181 days, ssllabs doesn't like less than 180
 	}
 
-
 	http_cache();
 
 	$globals['security_key'] = get_security_key();
@@ -111,11 +110,15 @@ function do_header($title, $id='home', $options = false) {
 		$this_site_properties['message_html'] = LCPBase::html($this_site_properties['message']);
 	}
 
+	$this_site->followers = SitesMgr::get_followers();
+
 	if (! is_array($options)) {
 		$left_options = array();
+
 		if ($this_site->enabled && empty($this_site_properties['new_disabled'])) {
 			$left_options[] = new MenuOption(_('enviar historia'), $globals['base_url'].'submit', $id, _('enviar nueva historia'), "submit_new_post");
 		}
+
 		$left_options[] = new MenuOption(_('portada'), $globals['base_url'], $id, _('página principal'));
 		$left_options[] = new MenuOption(_('nuevas'), $globals['base_url'].'queue', $id, _('menear noticias pendientes'));
 		$left_options[] = new MenuOption(_('populares'), $globals['base_url'].'popular', $id, _('historias más votadas'));

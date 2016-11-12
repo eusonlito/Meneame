@@ -284,7 +284,7 @@ function add_remove_sub(id, change) {
 
 		if (data.value) {
 			$icon.addClass('fa-times-circle-o');
-			$text.html("{% trans _('Dejar de seguir') %}");
+			$text.html("{% trans _('Siguiendo') %}");
 		} else {
 			$icon.addClass('fa-check-circle-o');
 			$text.html("{% trans _('Seguir') %}");

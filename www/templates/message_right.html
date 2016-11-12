@@ -1,7 +1,13 @@
 <div class="sidebox-extended">
-    <div class="header">
-        <h4><a href="#">{{ site.name_long }}</a></h4>
+    {% if site.color1 %}
+    <div class="header" style="color:{{ site.color1 }};{% if site.color2 %}background-color:{{ site.color2 }}{% endif %}">
+        <h4 style="color:{{ site.color1 }}"><a href="{{ site.url }}" style="color:{{ site.color1 }}">{{ site.name_long }}</a></h4>
     </div>
+    {% else %}
+    <div class="header" style="{% if site.color2 %}background-color:{{ site.color2 }}{% endif %}">
+        <h4><a href="{{ site.url }}">{{ site.name_long }}</a></h4>
+    </div>
+    {% endif %}
 
     <div class="box">
         {% if properties.message %}
