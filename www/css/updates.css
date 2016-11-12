@@ -1,4 +1,4 @@
-.row, .row *, .section-large, .section-large *, .sidebox-extended, .sidebox-extended * {
+.row, .row *, .section-large, .section-large *, .sidebox-extended, .sidebox-extended *, .action-links, .action-links * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -386,16 +386,8 @@ a.action-link, .action-text {
     color: white;
 }
 
-a.action-link:link, a.action-link:visited, q.action-link:hover {
+a.action-link:link, a.action-link:visited, a.action-link:hover {
     color: white;
-    text-decoration: none;
-}
-
-.action-links a.action-link, .action-links .action-text, .action-links a.action-link:link,
-.action-links a.action-link:hover, .action-links a.action-link:visited {
-    background: none;
-    border: none;
-    color: #4A4A4A;
     text-decoration: none;
 }
 
@@ -413,18 +405,26 @@ a.action-link span {
     padding: 8px;
     text-align: center;
     font-weight: 600;
+    vertical-align: middle;
 }
 
-.action-links .action-link .fa {
-    font-size: 13px;
+.action-links a.action-link, .action-links .action-text, .action-links a.action-link:link,
+.action-links a.action-link:hover, .action-links a.action-link:visited {
+    background: none;
+    border: none;
+    color: #4A4A4A;
+    line-height: 15px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.action-links .action-link .fa, .action-links .action-link span {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .action-links .action-text {
     color: #FD6014;
-}
-
-.action-links a.action-link span {
-    display: inline;
 }
 
 #header-sub {
@@ -596,10 +596,6 @@ a.action-link span {
         display: none;
     }
 
-    .action-links a.action-link, .action-links .action-text {
-        font-size: 11px;
-    }
-
     .separator {
         margin: 10px;
     }
@@ -607,5 +603,11 @@ a.action-link span {
     .border-left {
         padding-left: 5px;
         margin-left: 5px;
+    }
+}
+
+@media (max-width: 340px) {
+    .action-links a.action-link, .action-links .action-text {
+        font-size: 11px;
     }
 }
