@@ -1,62 +1,84 @@
-.row, .row *, .section-large, .section-large *, .sidebox-extended, .sidebox-extended *, .action-links, .action-links * {
+.row, .row *, .section, .section *, .sidebox-extended, .sidebox-extended *, .action-links, .action-links * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.section-large {
+.section {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 300;
-    text-align: center;
     margin-top: 30px;
     padding: 0 20px;
     letter-spacing: -0.5px;
     color: #4A4A4A;
 }
 
-.section-large h1 {
+.section.section-large {
+    text-align: center;
+}
+
+.section h1 {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 300;
-    letter-spacing: -1.5px;
-    font-size: 46px;
     margin: 0;
     color: #FF6400;
 }
 
-.section-large .intro {
+.section h1 a {
+    color: #FE6117;
+}
+
+.section.section-large h1 {
+    font-size: 46px;
+    letter-spacing: -1.5px;
+}
+
+.section.section-medium h1 {
+    font-size: 38px;
+    letter-spacing: -1.1px;
+}
+
+.section .intro {
     font-size: 16px;
     margin-bottom: 40px;
     color: #4c4c4c;
 }
 
-.section-large .legend {
+.section .legend {
     font-size: 15px;
     margin: 0 0 15px 0;
     font-weight: 700;
     color: #3C3C3C;
 }
 
-.section-large hr {
+.section hr {
     border-bottom: 1px solid #CCC;
     margin: 15px;
 }
 
-.section-large .container {
+.section .container {
     margin: 0 auto;
+}
+
+.section.section-large .container {
     max-width: 360px;
 }
 
-.section-large .bottomline {
+.section.section-medium .container {
+    max-width: 850px;
+}
+
+.section .bottomline {
     margin-top: 20px;
 }
 
-.section-large .bottomline a {
+.section .bottomline a {
     color: #FF6400;
 }
 
-.section-large .result-final-icon {
+.section .result-final-icon {
     font-size: 60px;
     line-height: 120px;
 }
@@ -69,7 +91,7 @@
     color: #ac0d00;
 }
 
-.section-large .button, .sidebox-extended .button {
+.section .button, .sidebox-extended .button {
     width: 100%;
     display: block;
     white-space: nowrap;
@@ -86,19 +108,20 @@
     color: white;
     border-radius: 5px;
     font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.section-large .button:visited, .sidebox-extended .button:visited {
+.section .button:visited, .sidebox-extended .button:visited {
     color: white;
 }
 
-.section-large .button:hover, .sidebox-extended .button:hover {
+.section .button:hover, .sidebox-extended .button:hover {
     color: white;
     background-color: #c35813;
     text-decoration: none;
 }
 
-.section-large .button:disabled, .sidebox-extended .button:disabled {
+.section .button:disabled, .sidebox-extended .button:disabled {
     background-color: #e0cec2;
 }
 
@@ -140,11 +163,11 @@
     width: 75%;
 }
 
-.section-large .form .input-row {
+.section .form .input-row {
     position: relative;
 }
 
-.section-large .form .input {
+.section .form .input {
     display: block;
     width: 100%;
     padding: 8px 12px;
@@ -161,7 +184,7 @@
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-.section-large .form .input-checkbox {
+.section .form .input-checkbox {
     position: relative;
     padding-left: 20px;
     margin-bottom: 0;
@@ -170,7 +193,7 @@
     cursor: pointer;
 }
 
-.section-large .form .input-checkbox input[type=checkbox], .section-large .form .input-checkbox input[type=radio] {
+.section .form .input-checkbox input[type=checkbox], .section .form .input-checkbox input[type=radio] {
     position: absolute;
     margin: 3px 0 0;
     margin-top: 1px\9;
@@ -178,52 +201,52 @@
     line-height: normal;
 }
 
-.section-large .form .input-checkbox label {
+.section .form .input-checkbox label {
     display: inline-block;
     margin-bottom: 5px;
     font-weight: 400;
 }
 
-.section-large .form .input-info {
+.section .form .input-info {
     color: #939393;
     font-size: 9.5px;
     text-align: left;
 }
 
-.section-large .form .input-password-show {
+.section .form .input-password-show {
     position: absolute;
     padding: 12px 20px;
     right: 0;
     color: #999999;
 }
 
-.section-large .form .input-password-show:visited {
+.section .form .input-password-show:visited {
     color: #999999;
 }
 
-.section-large .form .input-password-show:hover, .section-large .form .input-password-show:focus {
+.section .form .input-password-show:hover, .section .form .input-password-show:focus {
     color: #666;
     text-decoration: none;
 }
 
-.section-large .form .input-password-show + .input {
+.section .form .input-password-show + .input {
     padding-right: 45px;
 }
 
-.section-large .form .input + .input-info {
+.section .form .input + .input-info {
     margin-top: -8px;
     margin-left: 5px;
 }
 
-.section-large .form .input-error .input {
+.section .form .input-error .input {
     border: 1px solid #ac0d00;
 }
 
-.section-large .form .input-error .input-info {
+.section .form .input-error .input-info {
     color: #ac0d00;
 }
 
-.section-large .form .input-status {
+.section .form .input-status {
     position: absolute;
     display: none;
     right: 0;
@@ -233,17 +256,17 @@
     line-height: 38px;
 }
 
-.section-large .form .input-success .input-status {
+.section .form .input-success .input-status {
     display: block;
     color: #3f7600;
 }
 
-.section-large .form .input-error .input-status {
+.section .form .input-error .input-status {
     display: block;
     color: #ac0d00;
 }
 
-.section-large .form .input-error-message {
+.section .form .input-error-message {
     display: block;
     color: #ac0d00;
     margin-top: -5px;
@@ -252,15 +275,15 @@
     text-align: left;
 }
 
-.section-large .form .input-checkbox {
+.section .form .input-checkbox {
     text-align: left;
 }
 
-.section-large .form label {
+.section .form label {
     color: #5e5e5e;
 }
 
-.section-large .form .response {
+.section .form .response {
     font-weight: 700;
     margin-bottom: 15px;
     padding: 10px;
@@ -274,7 +297,7 @@
     color: #ff9400;
 }
 
-.section-large .form .bottomline {
+.section .form .bottomline {
     color: #505050;
     text-align: left;
     font-size: 13px;
@@ -519,12 +542,94 @@ a.action-link span {
     padding: 10px;
 }
 
+.form.form-edit {
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.form.form-edit hr {
+    width: 100%;
+    margin: 20px 0;
+    border-color: #D8D8D8;
+}
+
+.form.form-edit label.title {
+    display: block;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    font-weight: 400;
+    color: #FE6117;
+    margin-bottom: 4px;
+}
+
+.form.form-edit label.title.title-inline {
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 20px;
+}
+
+.form.form-edit .input-row {
+    margin-bottom: 20px;
+}
+
+.form.form-edit .row-col {
+    min-height: 32px;
+    line-height: 32px;
+}
+
+.form.form-edit .input {
+    display: inline-block;
+    width: auto;
+    padding: 5px 8px;
+}
+
+.form.form-edit .input-block {
+    display: block;
+    width: 100%;
+}
+
+.form.form-edit .input-checkbox {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.form.form-edit .input-row > .input-checkbox:first-child {
+    margin-left: 0;
+}
+
+.form.form-edit .row-col .input-checkbox input[type=checkbox], .form.form-edit .row-col .input-checkbox input[type=radio] {
+    margin-top: 10px;
+}
+
+.form.form-edit .input-color-picker {
+    text-transform: uppercase;
+}
+
+.form.form-edit .footer .button {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    text-transform: uppercase;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 60px;
+}
+
+.form.form-edit .fa-question-circle {
+    color: #9B9B9B;
+}
+
+.form.form-edit .fa-question-circle:hover {
+    color: #FF5E08;
+}
+
 .bg-gray-light {
     background-color: #f0f0f0;
 }
 
 .bg-gray-light a {
-    color: #ff5e08;
+    color: #FF5E08;
 }
 
 .bg-gray-medium {
@@ -558,6 +663,10 @@ a.action-link span {
     display: none !important;
 }
 
+.no-margin-left {
+    margin-left: 0 !important;
+}
+
 @media (max-width: 1024px) {
     .action-link span {
         display: none;
@@ -569,26 +678,26 @@ a.action-link span {
 }
 
 @media (max-width: 767px) {
-    .section-large {
+    .section {
         margin-top: 20px;
     }
 
-    .section-large .intro {
+    .section .intro {
         margin-bottom: 20px;
     }
 }
 
 @media (max-width: 388px) {
-    .section-large {
+    .section {
         margin-top: 10px;
     }
 
-    .section-large h1 {
+    .section h1 {
         font-size: 32px;
         margin-bottom: 10px;
     }
 
-    .section-large .intro {
+    .section .intro {
         font-size: 15px;
     }
 

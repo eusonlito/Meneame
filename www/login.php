@@ -43,7 +43,7 @@ if ($_POST["processlogin"] == 1) {
 
 do_header("login");
 echo '<div id="singlewrap">'."\n";
-echo '<section class="section-large">';
+echo '<section class="section section-large">';
 
 if($_GET["op"] === 'recover' || !empty($_POST['recover'])) {
 	do_recover();
@@ -55,7 +55,6 @@ echo '</section>';
 echo '</div>'."\n"; // singlewrap
 
 do_footer();
-
 
 function do_login() {
 	if ($post = do_login_post()) {

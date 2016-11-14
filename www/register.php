@@ -34,7 +34,7 @@ if(isset($_POST["process"])) {
 
 do_header(_("registro"), "post");
 
-echo '<section class="section-large">'."\n";
+echo '<section class="section section-large">'."\n";
 
 if(isset($_POST["process"])) {
 	switch (intval($_POST["process"])) {
