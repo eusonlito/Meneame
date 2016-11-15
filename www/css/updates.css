@@ -14,6 +14,19 @@
     color: #4A4A4A;
 }
 
+.section-with-sidebar {
+    float: left;
+    width: 900px;
+}
+
+#sidebar.sidebar-with-section {
+    margin-top: 80px;
+}
+
+.section.section-medium {
+    font-weight: 400;
+}
+
 .section.section-large {
     text-align: center;
 }
@@ -44,6 +57,10 @@
     font-size: 16px;
     margin-bottom: 40px;
     color: #4c4c4c;
+}
+
+.section .intro-large {
+    font-size: 18px;
 }
 
 .section .legend {
@@ -392,6 +409,10 @@
     text-align: left;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .g-recaptcha > div {
     margin: 40px auto;
 }
@@ -665,6 +686,32 @@ a.action-link span {
 
 .no-margin-left {
     margin-left: 0 !important;
+}
+
+.charlist {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.charlist a {
+    display: inline-block;
+    color: #4A4A4A;
+    margin-left: 3px;
+}
+
+.charlist a.selected {
+    color: #FE6117;
+}
+
+.charlist a:before {
+    content: "·";
+    margin-right: 3px;
+    color: #4A4A4A;
+}
+
+.charlist a:first-child:before {
+    content: "";
+    margin-right: 0;
 }
 
 @media (max-width: 1024px) {

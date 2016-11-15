@@ -148,7 +148,6 @@ function do_header($title, $id='home', $options = false) {
 	));
 }
 
-
 function do_js_from_array($array) {
 	global $globals;
 

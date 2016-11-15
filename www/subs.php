@@ -23,19 +23,12 @@ if (isset($_GET['all'])) {
 
 $char_selected = $chars = false; // User for index by first letter
 
-
 do_header(_("subs menéame"), 'm/');
 
-
-print_tabs($option);
-
-/*** SIDEBAR ****/
-echo '<div id="sidebar">';
-do_banner_right();
-do_banner_promotions();
+echo '<div id="sidebar" class="sidebar-with-section">';
+	do_banner_right();
+	do_banner_promotions();
 echo '</div>';
-/*** END SIDEBAR ***/
-echo '<div id="newswrap">';
 
 switch ($option) {
 	case 0:
@@ -54,11 +47,11 @@ switch ($option) {
 		$chars = $db->get_col("select distinct(left(ucase(name), 1)) from subs");
 
 		// Check if we must show just those beginning with a letter
-		if (!empty($_GET['c']) && 
+		if (!empty($_GET['c']) &&
 			($char_selected = substr(clean_input_string($_GET['c']), 0, 1)) ) {
 			$extra = "subs.name like '$char_selected%' and";
 			$rows = $db->get_var("select count(*) from subs where $extra subs.sub = 1 and created_from = ".SitesMgr::my_id());
-		} else { 
+		} else {
 			$extra = '';
 			$rows = -1;
 		}
@@ -76,6 +69,7 @@ $all_subs = $db->get_results($sql);
 $subs_followers_counter = $db->get_results("select subs.id, count(*) as c from subs, prefs where pref_key = 'sub_follow' and subs.id = pref_value group by subs.id order by c desc;");
 
 $subs = array();
+
 foreach ($all_subs as $s) {
 	foreach ($subs_followers_counter as $sub_counter) {
 		if ($s->id == $sub_counter->id) {
@@ -89,35 +83,9 @@ foreach ($all_subs as $s) {
 }
 
 Haanga::Load($template, compact('title', 'subs', 'chars', 'char_selected'));
-echo '</div>';
 
 if ($all) {
 	do_pages($rows, $page_size, false);
 }
 
 do_footer();
-
-function print_tabs($option) {
-	global $current_user;
-
-	if (SitesMgr::my_id() == 1 && SitesMgr::can_edit(0)) $can_edit = true;
-	else $can_edit = false;
-
-	$items = array();
-	
-	if ($current_user->user_id) {
-		$suscriptions_num = count(SitesMgr::get_subscriptions($current_user->user_id));
-    	$items[] = array('id' => 0, 'url' => 'subs?subscribed', 'title' => _('suscripciones')." [$suscriptions_num]");
-	}
-    $items[] = array('id' => 1, 'url' => 'subs?active', 'title' => _('más activos'));
-	$items[] = array('id' => 2, 'url' => 'subs?all', 'title' => _('todos'));
-	if ($can_edit) {
-		$items[] = array('id' => 3, 'url' => 'subedit', 'title' => _('crear sub'));
-	}
-
-
-	$vars = compact('items', 'option');
-	return Haanga::Load('print_tabs.html', $vars);
-}
-
-
