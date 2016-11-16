@@ -280,12 +280,15 @@ function add_remove_sub(id, change) {
 			$icon = $('.fa', $button),
 			$text = $('span', $button);
 
+		$button.removeClass('following-yes following-no');
 		$icon.removeClass('fa-check-circle-o fa-times-circle-o');
 
 		if (data.value) {
+			$button.addClass('following-yes');
 			$icon.addClass('fa-times-circle-o');
 			$text.html("{% trans _('Siguiendo') %}");
 		} else {
+			$button.addClass('following-no');
 			$icon.addClass('fa-check-circle-o');
 			$text.html("{% trans _('Seguir') %}");
 		}

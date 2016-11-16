@@ -117,4 +117,8 @@
 
         $description.slideToggle();
     });
+
+    $('.form-search .input-filter').on('change', function(e) {
+        window.location = base_url + 'subs?' + $(this).val();
+    });
 })(jQuery);

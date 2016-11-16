@@ -33,17 +33,12 @@ echo '</div>';
 switch ($option) {
 	case 0:
 		$subs = SitesMgr::get_subscriptions($current_user->user_id);
-		$template = 'subs_simple.html';
-		$all = false;
 		break;
 	case 1:
-		$all = false;
-		$template = 'subs.html';
 		$sql = "select subs.*, user_id, user_login, user_avatar, count(*) as c from subs LEFT JOIN users ON (user_id = owner), sub_statuses where date > date_sub(now(), interval 5 day) and subs.id = sub_statuses.id and sub_statuses.id = sub_statuses.origen and sub_statuses.status = 'published' and subs.sub = 1 group by subs.id order by c desc limit 50";
 		$subs = $db->get_results($sql);
 		break;
 	default:
-		$all = true;
 		$chars = $db->get_col("select distinct(left(ucase(name), 1)) from subs");
 
 		// Check if we must show just those beginning with a letter
@@ -53,11 +48,10 @@ switch ($option) {
 			$rows = $db->get_var("select count(*) from subs where $extra subs.sub = 1 and created_from = ".SitesMgr::my_id());
 		} else {
 			$extra = '';
-			$rows = -1;
+			$rows = $db->get_var("select count(*) from subs where subs.sub = 1 and created_from = ".SitesMgr::my_id());
 		}
 
-		$template = 'subs.html';
-		$page_size = 50;
+		$page_size = 20;
 		$page = get_current_page();
 		$offset=($page-1)*$page_size;
 
@@ -82,10 +76,8 @@ foreach ($all_subs as $s) {
 	}
 }
 
-Haanga::Load($template, compact('title', 'subs', 'chars', 'char_selected'));
-
-if ($all) {
-	do_pages($rows, $page_size, false);
-}
+Haanga::Load('subs.html', compact(
+	'title', 'subs', 'chars', 'char_selected', 'option', 'rows', 'page_size'
+));
 
 do_footer();
