@@ -849,14 +849,19 @@ a.action-link span {
     }
 
     .subs-listing .actions .followers {
+        width: auto;
         display: inline-block;
     }
 
-    .subs-listing .actions .action-link span {
+    .subs-listing .actions a.action-link {
+        width: 100px;
+    }
+
+    .subs-listing .actions a.action-link span {
         margin: 0;
     }
 
-    .subs-listing .actions .action-link .fa {
+    .subs-listing .actions a.action-link .fa {
         display: none;
     }
 }
