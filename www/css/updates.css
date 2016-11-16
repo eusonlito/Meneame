@@ -827,12 +827,12 @@ a.action-link span {
 }
 
 @media (max-width: 1024px) {
-    #header .action-link span {
-        display: none;
-    }
-
     #header .searchform .searchbox {
         width: 200px;
+    }
+
+    #header-center .action-link span {
+        display: none;
     }
 
     .subs-listing td.followers {
