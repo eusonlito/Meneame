@@ -21,6 +21,13 @@ if (isset($_GET['all'])) {
 	$option = count(SitesMgr::get_subscriptions($current_user->user_id)) > 0 ? 0 : 1;
 }
 
+if (!empty($_GET['q'])) {
+	$q = trim(preg_replace('/[^a-zA-Z0-9\s]/', '', strip_tags($_GET['q'])));
+	$option = 2;
+} else {
+	$q = null;
+}
+
 $char_selected = $chars = false; // User for index by first letter
 
 do_header(_("subs menéame"), 'm/');
@@ -39,17 +46,20 @@ switch ($option) {
 		$subs = $db->get_results($sql);
 		break;
 	default:
-		$chars = $db->get_col("select distinct(left(ucase(name), 1)) from subs");
+		$chars = $db->get_col('SELECT DISTINCT(LEFT(UCASE(name), 1)) FROM subs');
 
-		// Check if we must show just those beginning with a letter
-		if (!empty($_GET['c']) &&
-			($char_selected = substr(clean_input_string($_GET['c']), 0, 1)) ) {
-			$extra = "subs.name like '$char_selected%' and";
-			$rows = $db->get_var("select count(*) from subs where $extra subs.sub = 1 and created_from = ".SitesMgr::my_id());
-		} else {
-			$extra = '';
-			$rows = $db->get_var("select count(*) from subs where subs.sub = 1 and created_from = ".SitesMgr::my_id());
+		if (!empty($_GET['c'])) {
+			$char_selected = preg_replace('/[^A-Z]/', '', substr($_GET['c'], 0, 1));
 		}
+
+		if ($q) {
+			$q_sql = '%'.str_replace(' ', '%', $q).'%';
+			$extra = '(subs.name LIKE "'.$q_sql.'" OR subs.name_long LIKE "'.$q_sql.'") AND ';
+		} elseif ($char_selected) {
+			$extra = 'subs.name LIKE "'.$char_selected.'%" AND ';
+		}
+
+		$rows = $db->get_var('SELECT COUNT(*) FROM subs WHERE $extra subs.sub = 1 AND created_from = '.SitesMgr::my_id());
 
 		$page_size = 20;
 		$page = get_current_page();
@@ -59,12 +69,11 @@ switch ($option) {
 		$subs = $db->get_results($sql);
 }
 
-$all_subs = $db->get_results($sql);
 $subs_followers_counter = $db->get_results("select subs.id, count(*) as c from subs, prefs where pref_key = 'sub_follow' and subs.id = pref_value group by subs.id order by c desc;");
 
 $subs = array();
 
-foreach ($all_subs as $s) {
+foreach ($db->get_results($sql) as $s) {
 	foreach ($subs_followers_counter as $sub_counter) {
 		if ($s->id == $sub_counter->id) {
 			$s->followers = $sub_counter->c;
@@ -77,7 +86,7 @@ foreach ($all_subs as $s) {
 }
 
 Haanga::Load('subs.html', compact(
-	'title', 'subs', 'chars', 'char_selected', 'option', 'rows', 'page_size'
+	'title', 'subs', 'chars', 'char_selected', 'option', 'rows', 'page_size', 'q'
 ));
 
 do_footer();
