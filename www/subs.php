@@ -59,7 +59,7 @@ switch ($option) {
 			$extra = 'subs.name LIKE "'.$char_selected.'%" AND ';
 		}
 
-		$rows = $db->get_var('SELECT COUNT(*) FROM subs WHERE $extra subs.sub = 1 AND created_from = '.SitesMgr::my_id());
+		$rows = $db->get_var('SELECT COUNT(*) FROM subs WHERE '.$extra.' subs.sub = 1 AND created_from = '.SitesMgr::my_id());
 
 		$page_size = 20;
 		$page = get_current_page();
