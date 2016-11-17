@@ -22,7 +22,7 @@ if (isset($_GET['all'])) {
 }
 
 if (!empty($_GET['q'])) {
-	$q = trim(preg_replace('/[^a-zA-Z0-9\s]/', '', strip_tags($_GET['q'])));
+	$q = trim(preg_replace('/[^a-zA-Zá-úÁ-ÚñÑ0-9\s]/', '', strip_tags($_GET['q'])));
 } else {
 	$q = null;
 }
@@ -51,7 +51,7 @@ switch ($option) {
 	default:
 		$chars = $db->get_col('SELECT DISTINCT(LEFT(UCASE(name), 1)) FROM subs');
 
-		if (!empty($_GET['c'])) {
+		if (!$q && !empty($_GET['c'])) {
 			$char_selected = preg_replace('/[^A-Z]/', '', substr($_GET['c'], 0, 1));
 		}
 
