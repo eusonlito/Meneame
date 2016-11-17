@@ -23,9 +23,12 @@ if (isset($_GET['all'])) {
 
 if (!empty($_GET['q'])) {
 	$q = trim(preg_replace('/[^a-zA-Z0-9\s]/', '', strip_tags($_GET['q'])));
-	$option = 2;
 } else {
 	$q = null;
+}
+
+if ($q) {
+	$option = 2;
 }
 
 $char_selected = $chars = false; // User for index by first letter
@@ -69,11 +72,11 @@ switch ($option) {
 		$subs = $db->get_results($sql);
 }
 
+$all_subs = $db->get_results($sql);
 $subs_followers_counter = $db->get_results("select subs.id, count(*) as c from subs, prefs where pref_key = 'sub_follow' and subs.id = pref_value group by subs.id order by c desc;");
-
 $subs = array();
 
-foreach ($db->get_results($sql) as $s) {
+foreach ($all_subs as $s) {
 	foreach ($subs_followers_counter as $sub_counter) {
 		if ($s->id == $sub_counter->id) {
 			$s->followers = $sub_counter->c;
