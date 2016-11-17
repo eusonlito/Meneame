@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-.row, .row *, .section, .section *, .sidebox-extended, .sidebox-extended *, .action-links, .action-links * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 .section {
-=======
-.section-large {
->>>>>>> feature/subs-improvements
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 300;
