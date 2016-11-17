@@ -7,7 +7,7 @@
 		<a href="{{ globals.base_url }}subedit"><b>{% trans _('crear sub') %}</b></a><br/><br/>
 	{% endif %}
 
-	<form action="{{ globals.base_url }}subs?all" class="form form-search" method="get">
+	<form class="form form-search" method="get">
 		<div class="input-row input-row-search">
 			<i class="fa fa-search"></i>
 			<input type="search" name="q" class="input input-search" value="{{ q|escape }}" placeholder="{% trans _('Encuentra el sub que estás buscando') %}"/>

@@ -11,7 +11,7 @@ include(mnminclude.'html1.php');
 
 if (empty($routes)) die; // Don't allow to be called bypassing dispatcher
 
-if (isset($_GET['all'])) {
+if (isset($_GET['all']) || array_key_exists('q', (array)$_GET)) {
 	$option = 2; // Show all subs
 } elseif (! $current_user->user_id || isset($_GET['active']))  {
 	$option = 1; // Show active
