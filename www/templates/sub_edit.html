@@ -436,7 +436,7 @@
 			{% endif %} {# if current_user.admin #}
 
 			<footer class="footer">
-				<button type="submit" class="btn btn-mnm">{% trans _('guardar') %}</button>
+				<button type="submit" class="btn btn-mnm">{% if sub.id %}{% trans _('Guardar modificaciones') %}{% else %}{% trans _('Crear sub') %}{% endif %}</button>
 			</footer>
 		</form>
 	</div>
