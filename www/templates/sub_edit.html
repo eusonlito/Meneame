@@ -6,6 +6,10 @@
 			{% else %}
 			{% trans _('Nuevo sub') %}
 			{% endif %}
+
+			<a href="http://meneame.wikispaces.com/Subs" class="help" target="_blank" data-toggle="tooltip" title="{% trans _("Abrir el wiki de Menéame en nueva pestaña") %}">
+				<i class="fa fa-question-circle"></i>
+			</a>
 		</h1>
 
 		<form class="form form-edit" method="post" autocomplete="off" enctype="multipart/form-data">
@@ -33,7 +37,6 @@
 					<label>
 						<input type="checkbox" name="new_disabled" value="1" {% if extended.new_disabled %}checked{% endif %}>
 						{% trans _("Envíos deshabilitados") %}
-						<a href="http://meneame.wikispaces.com/Subs" class="help" target="_blank"><i class="fa fa-question-circle"></i></a>
 					</label>
 				</div>
 				{% endif %}
@@ -50,21 +53,25 @@
 				<div class="checkbox checkbox-inline">
 					<label>
 						<input type="checkbox" name="private" value="1" {% if sub.private %}checked{% endif %}/>
-						{% trans _('privado') %}
+						{% trans _('No enviar historias a la cola general') %}
+
+						<i class="fa fa-question-circle help" data-toggle="tooltip" title="{% trans _("Las historias que envías y cumplen determinado nivel de karma se envían automáticamente a la cola general. Selecciona esta opción si prefieres que no ocurra.") %}"></i>
 					</label>
 				</div>
 
 				<div class="checkbox checkbox-inline">
 					<label>
 						<input type="checkbox" name="nsfw" value="1" {% if sub.nsfw %}checked{% endif %}/>
-						{% trans _('nsfw') %}
+						{% trans _('NSFW') %}
 					</label>
 				</div>
 
 				<div class="checkbox checkbox-inline">
 					<label>
 						<input type="checkbox" name="no_anti_spam" value="1" {% if extended.no_anti_spam %}checked{% endif %}/>
-						{% trans _('deshabilitar control anti spam') %}
+						{% trans _('Permitir enlaces duplicados') %}
+
+						<i class="fa fa-question-circle help" data-toggle="tooltip" title="{% trans _("Permite enviar enlaces que ya están en otros subs o en la cola general, y sitios que han sido vetados en Menéame por incumplir las normas.") %}"></i>
 					</label>
 				</div>
 
@@ -77,26 +84,30 @@
 			</div>
 
 			<div class="form-group mb-20">
-				<label class="title title-inline">{% trans _('Enlace') %}</label>
+				<label class="title title-inline">
+					{% trans _('Historias permitidas') %}
+
+					<i class="fa fa-question-circle help" data-toggle="tooltip" title="{% trans _("Las historias que envíes pueden llevar siempre enlace, o puede ser únicamente texto (microblogging). También puedes hacer que sea opcional para el usuario.") %}"></i>
+				</label>
 
 				<div class="radio radio-inline">
 					<label>
 						<input type="radio" name="no_link" value="0" {% if extended.no_link == 0 %}checked{% endif %}/>
-						{% trans _('Siempre') %}
+						{% trans _('Siempre con enlace') %}
 					</label>
 				</div>
 
 				<div class="radio radio-inline">
 					<label>
 						<input type="radio" name="no_link" value="1" {% if extended.no_link == 1 %}checked{% endif %}/>
-						{% trans _('Opcional (microblogging)') %}
+						{% trans _('Enlace opcional') %}
 					</label>
 				</div>
 
 				<div class="radio radio-inline">
 					<label>
 						<input type="radio" name="no_link" value="2" {% if extended.no_link == 2 %}checked{% endif %}/>
-						{% trans _('Sin enlace (microblogging)') %}
+						{% trans _('Siempre sin enlace') %}
 					</label>
 				</div>
 			</div>
@@ -128,38 +139,38 @@
 						<label for="color2" class="title title-inline">{% trans _('Fondo') %}:</label>
 						<input type="text" id="color2" name="color2" value="{{ sub.color2 }}" class="form-control input-color-picker" pattern="#[a-fA-F\d]{6}" placeholder="#a0a0a0" maxlength="7" style="width: 90px" />
 					</div>
+
+					<div class="col-sm-4">
+						<label for="fileInput" class="title title-inline">{% trans _('Imagen de logo') %}</label>
+
+						<input type="hidden" name="MAX_FILE_SIZE" value="{{ globals.media_max_size }}"/>
+						<input type="file" autocomplete="off" name="logo_image" id="fileInput" class="uploadFile" accept="image/*"/>
+
+						<div class="droparea_info"></div>
+
+						<script type="text/javascript">
+						addPostCode(function () {
+							$("#fileInput").nicefileinput({ title: '{% trans _('Subir imagen de logo') %}'});
+							$('form').droparea({maxsize: {{ globals.media_max_size }} });
+						});
+						</script>
+
+						{% if sub.media_size > 0 %}
+						<div class="checkbox checkbox-inline">
+							<label>
+								<input type="checkbox" name="logo_image_delete" value="1"/>
+								{% trans _('Eliminar') %}
+							</label>
+						</div>
+						{% endif %}
+					</div>
 				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="fileInput" class="title title-inline">{% trans _('Imagen logo') %}</label>
-
-				<input type="hidden" name="MAX_FILE_SIZE" value="{{ globals.media_max_size }}"/>
-				<input type="file" autocomplete="off" name="logo_image" id="fileInput" class="uploadFile" accept="image/*"/>
-
-				<div class="droparea_info"></div>
-
-				<script type="text/javascript">
-				addPostCode(function () {
-					$("#fileInput").nicefileinput({ title: '{% trans _('Subir imagen de logo') %}'});
-					$('form').droparea({maxsize: {{ globals.media_max_size }} });
-				});
-				</script>
-
-				{% if sub.media_size > 0 %}
-				<div class="checkbox checkbox-inline">
-					<label>
-						<input type="checkbox" name="logo_image_delete" value="1"/>
-						{% trans _('Eliminar') %}
-					</label>
-				</div>
-				{% endif %}
 			</div>
 
 			<hr />
 
 			<div class="form-group mb-20">
-				<label class="title">{% trans _('límites de entradilla') %}</label>
+				<label class="title">{% trans _('Límites de entradilla') %}</label>
 			</div>
 
 			<div class="form-group">
@@ -173,13 +184,15 @@
 						<label for="intro_max_len" class="title title-inline">{% trans _('Longitud máxima') %}</label>
 						<input type="number" id="intro_max_len" name="intro_max_len" class="form-control" min="0" max="5000" value="{{ extended.intro_max_len }}" style="width: 60px" />
 					</div>
-				</div>
 
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="allow_paragraphs" value="1" {% if extended.allow_paragraphs %}checked{% endif %}/>
-						{% trans _('Permitir párrafos') %}
-					</label>
+					<div class="col-sm-4">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" name="allow_paragraphs" value="1" {% if extended.allow_paragraphs %}checked{% endif %}/>
+								{% trans _('Permitir párrafos') %}
+							</label>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -340,7 +353,7 @@
 						<div class="checkbox">
 							<label>
 								<input type="checkbox" name="enabled" value="1" {% if sub.enabled %}checked{% endif %} />
-								{% trans _("habilitado") %}
+								{% trans _("Habilitado") %}
 							</label>
 						</div>
 					</div>
@@ -355,7 +368,8 @@
 					<div class="col-sm-4">
 						<div class="checkbox">
 							<label>
-								<input type="checkbox" name="allow_main_link" value="1" {% if sub.allow_main_link %}checked{% endif %}> {% trans _("permitir enlace principal") %}
+								<input type="checkbox" name="allow_main_link" value="1" {% if sub.allow_main_link %}checked{% endif %}>
+								{% trans _("Permitir enlace principal") %}
 							</label>
 						</div>
 					</div>
@@ -368,13 +382,13 @@
 				<div class="row">
 					{% if copy_from %}
 					<div class="col-sm-6">
-						<label class="title title-inline">{% trans _('copiar desde') %}</label>
+						<label class="title title-inline">{% trans _('Copiar desde') %}</label>
 
 						{% for c in copy_from %}
 						<div class="form-group">
 							<select name="copy_from[]" class="form-control block">
 								<option value="{{ c.id }}" selected>{{ c.name }}</option>
-								<option value="0">{% trans _('eliminar') %}</option>
+								<option value="0">{% trans _('Eliminar') %}</option>
 							</select>
 						</div>
 						{% endfor %}
@@ -383,7 +397,7 @@
 
 					{% if candidates_from %}
 					<div class="col-sm-6">
-						<label class="title title-inline">{% trans _('añadir copiar desde') %}</label>
+						<label class="title title-inline">{% trans _('Añadir copiar desde') %}</label>
 
 						<div class="form-group">
 							<select name="copy_from[]" class="form-control block">

@@ -121,4 +121,6 @@
     $('.form-search .input-filter').on('change', function(e) {
         window.location = base_url + 'subs?' + $(this).val();
     });
+
+    $('[data-toggle="tooltip"]').tooltip();
 })(jQuery);

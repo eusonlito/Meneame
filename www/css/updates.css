@@ -29,6 +29,12 @@
     color: #FE6117;
 }
 
+.section h1 a.help {
+    font-size: 30px;
+    color: #d6d6d6;
+    margin-left: 5px;
+}
+
 .section.section-large h1 {
     font-size: 46px;
     letter-spacing: -1.5px;
@@ -563,6 +569,7 @@ a.action-link span {
 
 .form.form-edit .help {
     color: #d6d6d6;
+    margin-left: 5px;
 }
 
 .form.form-edit .help:hover {
