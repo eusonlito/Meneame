@@ -132,6 +132,25 @@
     text-align: left;
 }
 
+.form .checkbox.checkbox-inline, .form .radio.radio-inline {
+    margin: 0;
+    padding: 0;
+}
+
+.form .checkbox.checkbox-inline-input, .form .radio.radio-inline-input {
+    min-height: 30px;
+}
+
+.form .form-control + .checkbox.checkbox-inline,
+.form .form-control + .radio.radio-inline {
+    margin-left: 20px;
+}
+
+.form .checkbox.checkbox-inline + .checkbox.checkbox-inline,
+.form .radio.radio-inline + .radio.radio-inline {
+    margin-left: 30px;
+}
+
 .form .input-password-show {
     position: absolute;
     padding: 10px 20px;
@@ -240,6 +259,21 @@
 
 .response.response-info {
     color: #ff9400;
+}
+
+.form .alert {
+    border: 0;
+    border-radius: 0;
+}
+
+.form .alert.alert-danger {
+    background: #f1e7e7;
+    border-left: 2px solid #a94442;
+}
+
+.form .alert.alert-success {
+    background: #eaf1e7;
+    border-left: 2px solid #3c763d;
 }
 
 .form .bottomline {
@@ -496,7 +530,7 @@ a.action-link span {
 
 .form.form-edit hr {
     width: 100%;
-    margin: 20px 0;
+    margin: 30px 0;
     border-color: #D8D8D8;
 }
 
@@ -515,27 +549,42 @@ a.action-link span {
     margin-right: 20px;
 }
 
+.form.form-edit .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.form.form-edit input.form-control, .form.form-edit select.form-control {
+    padding: 0 10px;
+    height: 30px;
+}
+
+.form.form-edit .help {
+    color: #d6d6d6;
+}
+
+.form.form-edit .help:hover {
+    color: #FF5E08;
+}
+
 .form.form-edit .input-color-picker {
     text-transform: uppercase;
 }
 
+.form.form-edit textarea.form-control {
+    height: 100px;
+}
+
+.form.form-edit .footer {
+    margin-top: 30px;
+}
+
 .form.form-edit .footer .btn.btn-mnm {
-    display: inline-block;
-    width: auto;
-    margin: 0;
     text-transform: uppercase;
-    vertical-align: middle;
-    font-size: 16px;
     font-weight: 700;
     padding: 8px 60px;
-}
-
-.form.form-edit .fa-question-circle {
-    color: #9B9B9B;
-}
-
-.form.form-edit .fa-question-circle:hover {
-    color: #FF5E08;
 }
 
 .charlist {
@@ -661,29 +710,25 @@ a.action-link span {
     border-left: 1px solid #dfdfdf;
 }
 
-.pull-left {
-    float: left;
-}
-
-.pull-right {
-    float: right;
-}
-
-.clearfix:before, .clearfix:after {
-    display: table;
-    content: " ";
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-.hidden {
-    display: none !important;
-}
-
 .no-margin-left {
     margin-left: 0 !important;
+}
+
+.m-20 {
+    margin: 20px !important;
+}
+
+.mb-20 {
+    margin-bottom: 20px !important;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.block {
+    display: block !important;
+    width: 100% !important;
 }
 
 /** BOOTSTRAP **/
@@ -788,6 +833,20 @@ input[type="email"].form-control, input[type="url"].form-control, input[type="se
 
     .section .intro {
         margin-bottom: 20px;
+    }
+
+    .form .checkbox-inline, .form .radio-inline {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .form .form-control + .checkbox.checkbox-inline,
+    .form .form-control + .radio.radio-inline,
+    .form .checkbox.checkbox-inline + .checkbox.checkbox-inline,
+    .form .radio.radio-inline + .radio.radio-inline {
+        margin-left: 0;
+        margin-top: 10px;
     }
 }
 
