@@ -142,16 +142,16 @@
     text-decoration: none;
 }
 
-.form .input-password-show + .input {
+.form .input-password-show + .form-control {
     padding-right: 45px;
 }
 
-.form .input + .input-info {
+.form .form-control + .input-info {
     margin-top: -8px;
     margin-left: 5px;
 }
 
-.form .input-error .input {
+.form .input-error .form-control {
     border: 1px solid #ac0d00;
 }
 
@@ -426,25 +426,23 @@ a.action-link span {
     text-align: center;
 }
 
-.sidebox-extended .footer .button {
-    display: inline-block;
-    width: auto;
-    margin: 0;
-    padding: 5px 40px;
+.sidebox-extended .footer .btn.btn-mnm {
     text-transform: uppercase;
-    vertical-align: middle;
+    padding: 5px 40px;
+    margin: 0;
     font-size: 12px;
+    vertical-align: middle;
 }
 
-.sidebox-extended .footer .button .fa {
-    vertical-align: middle;
+.sidebox-extended .footer .btn.btn-mnm .fa {
     font-size: 16px;
     margin-right: 5px;
+    vertical-align: middle;
 }
 
-.sidebox-extended .footer .button span {
-    vertical-align: middle;
+.sidebox-extended .footer .btn.btn-mnm span {
     font-weight: 600;
+    vertical-align: middle;
 }
 
 .sub-description {
@@ -477,31 +475,11 @@ a.action-link span {
     margin-right: 20px;
 }
 
-.form.form-edit .input-row {
-    margin-bottom: 20px;
-}
-
-.form.form-edit .row-col {
-    min-height: 32px;
-    line-height: 32px;
-}
-
-.form.form-edit .input {
-    display: inline-block;
-    width: auto;
-    padding: 5px 8px;
-}
-
-.form.form-edit .input-block {
-    display: block;
-    width: 100%;
-}
-
 .form.form-edit .input-color-picker {
     text-transform: uppercase;
 }
 
-.form.form-edit .footer .button {
+.form.form-edit .footer .btn.btn-mnm {
     display: inline-block;
     width: auto;
     margin: 0;
@@ -564,6 +542,10 @@ a.action-link span {
 }
 
 /** BOOTSTRAP **/
+
+.form-group {
+    margin-bottom: 5px;
+}
 
 .form-control, textarea.form-control, input[type="text"].form-control,
 input[type="password"].form-control, input[type="datetime"].form-control,

@@ -28,14 +28,14 @@
     <div class="footer content bg-gray-medium">
         {% if user.user_id %}
 
-        <a href="javascript:add_remove_sub('{{ site.id }}', 1)" class="button follow_b_{{ site.id }}" title="{% trans _('suscripción al sub') %}"/>
+        <a href="javascript:add_remove_sub('{{ site.id }}', 1)" class="btn btn-mnm follow_b_{{ site.id }}" title="{% trans _('suscripción al sub') %}"/>
             <i class="fa fa-check-circle-o"></i>
             <span>{% trans _('Seguir') %}</span>
         </a>
 
         {% else %}
 
-        <a href="{{ globals.base_url_general }}login?return={{ globals.uri|urlencode }}" class="button" title="{% trans _('suscripción al sub') %}"/>
+        <a href="{{ globals.base_url_general }}login?return={{ globals.uri|urlencode }}" class="btn btn-mnm" title="{% trans _('suscripción al sub') %}"/>
             <i class="fa fa-check-circle-o"></i>
             <span>{% trans _('Seguir') %}</span>
         </a>
