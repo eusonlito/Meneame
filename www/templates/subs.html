@@ -45,7 +45,7 @@
 
 			<td class="logo">
 				{% if s.user_id %}
-				<img data-src="{% exec get_avatar_url s.user_id, s.user_avatar, 40, false %}" data-2x="s:-20.:-40." src="{{ globals.base_static }}img/g.gif" class="tooltip u:{{ s.user_id }} avatar lazy"/>
+				<img data-src="{% exec get_avatar_url s.user_id, s.user_avatar, 40, false %}" data-2x="s:-20.:-40." src="{{ globals.base_static }}img/g.gif" class="avatar lazy"/>
 				{% else %}
 				<img data-src="{% exec get_no_avatar_url 40, false %}" data-2x="s:-20.:-40." src="{{ globals.base_static }}img/g.gif" class="avatar lazy"/>
 				{% endif %}
