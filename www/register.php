@@ -65,24 +65,26 @@ function do_register0() {
 		echo '<form id="form-register" method="post" class="form">';
 			echo '<div class="legend">'._('Registrarme con mi correo').'</div>';
 
-			echo '<div class="input-row input-validate">';
+			echo '<div class="form-group input-validate">';
 				echo '<span class="input-status fa"></span>';
-				echo '<input type="text" name="username" tabindex="1" id="name" value="'.htmlspecialchars($_POST['username']).'" class="input" placeholder="'._('Nombre de usuario').'" required />';
+				echo '<input type="text" name="username" tabindex="1" id="name" value="'.htmlspecialchars($_POST['username']).'" class="form-control" placeholder="'._('Nombre de usuario').'" required />';
 			echo '</div>';
 
-			echo '<div class="input-row input-validate">';
+			echo '<div class="form-group input-validate">';
 				echo '<span class="input-status fa"></span>';
-				echo '<input type="email" name="email" tabindex="2" id="email" value="'.htmlspecialchars($_POST['email']).'" class="input" placeholder="'._('Correo electrónico').'" required />';
+				echo '<input type="email" name="email" tabindex="2" id="email" value="'.htmlspecialchars($_POST['email']).'" class="form-control" placeholder="'._('Correo electrónico').'" required />';
 			echo '</div>';
 
-			echo '<div class="input-row input-validate">';
+			echo '<div class="form-group input-validate">';
 				echo '<span class="input-status fa"></span>';
 				echo '<a href="#" class="input-password-show"><i class="fa fa-eye"></i></a>';
-				echo '<input type="password" name="password" id="password" tabindex="3" class="input" placeholder="'._('Contraseña').'" required />';
+				echo '<input type="password" name="password" id="password" tabindex="3" class="form-control" placeholder="'._('Contraseña').'" required />';
 				echo '<div class="input-info">'._('Al menos ocho caracteres, incluyendo mayúsculas, minúsculas y números').'</div>';
 			echo '</div>';
 
-			echo '<div class="input-row"><button type="submit" name="login" class="button" tabindex="4">'._('Crear usuario').'</button></div>';
+			echo '<div class="form-group">';
+				echo '<button type="submit" name="login" class="btn btn-block btn-mnm" tabindex="4">'._('Crear usuario').'</button>';
+			echo '</div>';
 
 			echo '<input type="hidden" name="process" value="1" />';
 			echo '<input type="hidden" name="return" value="'.htmlspecialchars($_REQUEST['return']).'" />';
@@ -103,7 +105,9 @@ function do_register1() {
 		echo '<form id="form-register" method="post" class="form">';
 			ts_print_form();
 
-			echo '<div class="input-row"><button type="submit" name="submit" class="button" tabindex="2">'._('Continuar').'</button></div>';
+			echo '<div class="form-group">';
+				echo '<button type="submit" name="submit" class="btn btn-block btn-mnm" tabindex="2">'._('Continuar').'</button>';
+			echo '</div>';
 
 			echo '<input type="hidden" name="process" value="2" />';
 			echo '<input type="hidden" name="email" value="'.htmlspecialchars($_POST['email']).'" />';
@@ -174,17 +178,17 @@ function do_register2() {
 		echo '<div class="legend">'._('Tienes un correo electrónico').'</div>';
 
 		echo '<div class="row">';
-			echo '<div class="row-col row-col-3">';
+			echo '<div class="col-xs-3">';
 				echo '<i class="result-final-icon result-final-icon-success fa fa-check-circle-o"></i>';
 			echo '</div>';
 
-			echo '<div class="row-col row-col-9 text-left">';
-				echo '<p class="intro">'.__('Revisa tu correo, allí estarán las instrucciones para comenzar a participar de forma activa en la comunidad.').'</p>';
-				echo '<p class="intro">'.__('¡Ah! Si no lo ves, échale un vistazo a la carpeta de SPAM, a veces pasa.').'</p>';
+			echo '<div class="col-xs-9 text-left">';
+				echo '<p class="text-large">'.__('Revisa tu correo, allí estarán las instrucciones para comenzar a participar de forma activa en la comunidad.').'</p>';
+				echo '<p class="text-large">'.__('¡Ah! Si no lo ves, échale un vistazo a la carpeta de SPAM, a veces pasa.').'</p>';
 			echo '</div>';
 		echo '</div>';
 
-		echo '<a href="/" class="button">'._('Ir a la portada').'</a>';
+		echo '<a href="/" class="btn btn-block btn-mnm">'._('Ir a la portada').'</a>';
 	echo '</div>';
 }
 
@@ -270,16 +274,16 @@ function do_register_error($message, $back) {
 		echo '<hr />';
 
 		echo '<div class="row">';
-			echo '<div class="row-col row-col-3">';
+			echo '<div class="col-md-3">';
 				echo '<i class="result-final-icon result-final-icon-error fa fa-times"></i>';
 			echo '</div>';
 
-			echo '<div class="row-col row-col-9 text-left">';
+			echo '<div class="col-md-9 text-left">';
 				echo '<div class="legend">'._('¡Vaya! Algo malo ha ocurrido').'</div>';
-				echo '<p class="intro">'.$message.'</p>';
+				echo '<p class="text-large">'.$message.'</p>';
 			echo '</div>';
 		echo '</div>';
 
-		echo '<a href="'.$back.'" class="button">'._('Volver al registro').'</a>';
+		echo '<a href="'.$back.'" class="btn btn-block btn-mnm">'._('Volver al registro').'</a>';
 	echo '</div>';
 }
