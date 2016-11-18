@@ -82,14 +82,21 @@ foreach ($all_subs as $s) {
 			$s->followers = $sub_counter->c;
 		}
 	}
-	if (!isset($s->followers)) $s->followers=0;
+
+	if (!isset($s->followers)) {
+		$s->followers=0;
+	}
+
 	if ($s->enabled) {
 		$subs[] = $s;
 	}
 }
 
+$can_edit = (SitesMgr::my_id() == 1 && SitesMgr::can_edit(0));
+
 Haanga::Load('subs.html', compact(
-	'title', 'subs', 'chars', 'char_selected', 'option', 'rows', 'page_size', 'q'
+	'title', 'subs', 'chars', 'char_selected', 'option', 'rows',
+	'page_size', 'q', 'can_edit'
 ));
 
 do_footer();
