@@ -17,7 +17,7 @@
         {% endif %}
 
         <div class="content bg-gray-light clearfix">
-            {% if not site.private AND owner.user_id %}
+            {% if site.show_admin AND owner.user_id %}
             {% trans _('Admin') %} | <a href="{{ owner.user_login|useruri }}">{{ owner.user_login }}</a>
             {% endif %}
 

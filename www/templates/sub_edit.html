@@ -85,6 +85,26 @@
 
 			<div class="form-group mb-20">
 				<label class="title title-inline">
+					{% trans _('Nombre del administrador') %}
+				</label>
+
+				<div class="radio radio-inline">
+					<label>
+						<input type="radio" name="show_admin" value="0" {% if sub.show_admin == 0 %}checked{% endif %}/>
+						{% trans _('Oculto') %}
+					</label>
+				</div>
+
+				<div class="radio radio-inline">
+					<label>
+						<input type="radio" name="show_admin" value="1" {% if sub.show_admin == 1 %}checked{% endif %}/>
+						{% trans _('Visible') %}
+					</label>
+				</div>
+			</div>
+
+			<div class="form-group mb-20">
+				<label class="title title-inline">
 					{% trans _('Historias permitidas') %}
 
 					<i class="fa fa-question-circle help" data-toggle="tooltip" title="{% trans _("Las historias que envíes pueden llevar siempre enlace, o puede ser únicamente texto (microblogging). También puedes hacer que sea opcional para el usuario.") %}"></i>
