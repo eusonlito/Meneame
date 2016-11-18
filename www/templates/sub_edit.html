@@ -126,12 +126,12 @@
 
 			<div class="input-row">
 				<div class="row">
-					<div class="row-col row-col-4">
+					<div class="col-md-4">
 						<label for="color1" class="title title-inline">{% trans _('título') %}:</label>
 						<input type="text" id="color1" name="color1" value="{{ sub.color1 }}" class="input input-color-picker" pattern="#[a-fA-F\d]{6}" placeholder="#a0a0a0" maxlength="7" style="width: 90px" />
 					</div>
 
-					<div class="row-col row-col-4">
+					<div class="col-md-4">
 						<label for="color2" class="title title-inline">{% trans _('fondo') %}:</label>
 						<input type="text" id="color2" name="color2" value="{{ sub.color2 }}" class="input input-color-picker" pattern="#[a-fA-F\d]{6}" placeholder="#a0a0a0" maxlength="7" style="width: 90px" />
 					</div>
@@ -171,12 +171,12 @@
 
 			<div class="input-row">
 				<div class="row">
-					<div class="row-col row-col-4">
+					<div class="col-md-4">
 						<label for="intro_min_len" class="title title-inline">{% trans _('longitud mínima') %}</label>
 						<input type="number" id="intro_min_len" name="intro_min_len" class="input" min="0" max="200" value="{{ extended.intro_min_len }}" style="width: 60px" />
 					</div>
 
-					<div class="row-col row-col-4">
+					<div class="col-md-4">
 						<label for="intro_max_len" class="title title-inline">{% trans _('longitud máxima') %}</label>
 						<input type="number" id="intro_max_len" name="intro_max_len" class="input" min="0" max="5000" value="{{ extended.intro_max_len }}" style="width: 60px" />
 					</div>
@@ -219,51 +219,51 @@
 
 			<div class="input-row">
 				<div class="row">
-					<div class="row-col row-col-3">
+					<div class="col-md-3">
 						<label for="twitter_page" class="title title-inline">{% trans _('perfil') %}</label>
 					</div>
 
-					<div class="row-col row-col-9">
+					<div class="col-md-9">
 						<input type="url" value="{{ extended.twitter_page }}" placeholder="https://twitter.com/usuario" id="twitter_page" name="twitter_page" class="input input-block" maxlength="60"/>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="row-col row-col-3">
+					<div class="col-md-3">
 						<label for="twitter_consumer_key" class="title title-inline">{% trans _('consumer key') %}</label>
 					</div>
 
-					<div class="row-col row-col-9">
+					<div class="col-md-9">
 						<input type="text" value="{{ extended.twitter_consumer_key }}" autocomplete="off" placeholder="aaA1bBi..." id="twitter_consumer_key" name="twitter_consumer_key" class="input input-block" maxlength="32" pattern="[A-Za-z0-9\-]{20,32}"/>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="row-col row-col-3">
+					<div class="col-md-3">
 						<label for="twitter_consumer_secret" class="title title-inline">{% trans _('consumer secret') %}</label>
 					</div>
 
-					<div class="row-col row-col-9">
+					<div class="col-md-9">
 						<input type="text" value="{{ extended.twitter_consumer_secret }}" autocomplete="off" placeholder="aaA1bBi..." id="twitter_consumer_secret" name="twitter_consumer_secret" class="input input-block" maxlength="64" pattern="[A-Za-z0-9\-]{32,64}"/>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="row-col row-col-3">
+					<div class="col-md-3">
 						<label for="twitter_token" class="title title-inline">{% trans _('token') %}</label>
 					</div>
 
-					<div class="row-col row-col-9">
+					<div class="col-md-9">
 						<input type="text" value="{{ extended.twitter_token }}" autocomplete="off" placeholder="aaA1bBi-..." id="twitter_token" name="twitter_token" class="input input-block" maxlength="64" pattern="[A-Za-z0-9\-]{50,64}"/>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="row-col row-col-3">
+					<div class="col-md-3">
 						<label for="twitter_token_secret" class="title title-inline">{% trans _('token secret') %}</label>
 					</div>
 
-					<div class="row-col row-col-9">
+					<div class="col-md-9">
 						<input type="text" value="{{ extended.twitter_token_secret }}" autocomplete="off" placeholder="aaA1bBi..." id="twitter_token_secret" name="twitter_token_secret" class="input input-block" maxlength="64" pattern="[A-Za-z0-9\-]{32,64}"/>
 					</div>
 				</div>
@@ -282,41 +282,41 @@
 
 			<div class="input-row">
 				<div class="row">
-					<div class="row-col row-col-3">
+					<div class="col-md-3">
 						<label for="facebook_page" class="title title-inline">{% trans _('página') %}</label>
 					</div>
 
-					<div class="row-col row-col-9">
+					<div class="col-md-9">
 						<input type="url" value="{{ extended.facebook_page }}" placeholder="https://www.facebook.com/página" id="facebook_page" name="facebook_page" class="input input-block" maxlength="60"/>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="row-col row-col-3">
+					<div class="col-md-3">
 						<label for="facebook_key" class="title title-inline">{% trans _('key') %}</label>
 					</div>
 
-					<div class="row-col row-col-9">
+					<div class="col-md-9">
 						<input type="text" value="{{ extended.facebook_key }}" autocomplete="off" placeholder="aaA1bBi..." id="facebook_key" name="facebook_key" class="input input-block" maxlength="40" pattern="[A-Za-z0-9\-]{30,40}"/>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="row-col row-col-3">
+					<div class="col-md-3">
 						<label for="facebook_secret" class="title title-inline">{% trans _('secret') %}</label>
 					</div>
 
-					<div class="row-col row-col-9">
+					<div class="col-md-9">
 						<input type="text" value="{{ extended.facebook_secret }}" autocomplete="off" placeholder="aaA1bBi..." id="facebook_secret" name="facebook_secret" class="input input-block" maxlength="40" pattern="[A-Za-z0-9\-]{30,40}"/>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="row-col row-col-3">
+					<div class="col-md-3">
 						<label for="facebook_token" class="title title-inline">{% trans _('token') %}</label>
 					</div>
 
-					<div class="row-col row-col-9">
+					<div class="col-md-9">
 						<input type="text" value="{{ extended.facebook_token }}" autocomplete="off" placeholder="aaA1bBi-..." id="facebook_token" name="facebook_token" class="input input-block" maxlength="120" pattern="[A-Za-z0-9\-]{100,120}"/>
 					</div>
 				</div>
@@ -343,7 +343,7 @@
 
 			<div class="input-row">
 				<div class="row">
-					<div class="row-col row-col-4">
+					<div class="col-md-4">
 						<div class="input-checkbox no-margin-left">
 							<label>
 								<input type="checkbox" name="enabled" value="1" {% if sub.enabled %}checked{% endif %} />
@@ -352,7 +352,7 @@
 						</div>
 					</div>
 
-					<div class="row-col row-col-4">
+					<div class="col-md-4">
 						<label for="owner" class="title title-inline">{% trans _('ID usuario') %}</label>
 
 						{% if sub.name %}
@@ -363,7 +363,7 @@
 					</div>
 
 					{% if sub.id > 0 %}
-					<div class="row-col row-col-4">
+					<div class="col-md-4">
 						<div class="input-checkbox no-margin-left">
 							<label>
 								<input type="checkbox" name="allow_main_link" value="1" {% if sub.allow_main_link %}checked{% endif %}> {% trans _("permitir enlace principal") %}
@@ -378,7 +378,7 @@
 			<div class="input-row">
 				<div class="row">
 					{% if copy_from %}
-					<div class="row-col row-col-6">
+					<div class="col-md-6">
 						<label class="title title-inline">{% trans _('copiar desde') %}</label>
 
 						{% for c in copy_from %}
@@ -391,7 +391,7 @@
 					{% endif %}
 
 					{% if candidates_from %}
-					<div class="row-col row-col-6">
+					<div class="col-md-6">
 						<label class="title title-inline">{% trans _('añadir copiar desde') %}</label>
 
 						<select name="copy_from[]" class="input input-block">
