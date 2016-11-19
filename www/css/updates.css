@@ -417,8 +417,8 @@ a.action-link span {
 }
 
 .action-links * {
-    line-height: 15px;
-    font-size: 11px;
+    line-height: 13px;
+    font-size: 13px;
 }
 
 .action-links a.action-link, .action-links .action-text, .action-links a.action-link:link,
@@ -899,5 +899,6 @@ input[type="email"].form-control, input[type="url"].form-control, input[type="se
 @media (max-width: 340px) {
     .action-links a.action-link, .action-links .action-text {
         font-size: 11px;
+        line-height: 11px;
     }
 }
