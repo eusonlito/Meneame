@@ -184,14 +184,14 @@
                     <span class="action-text">{{ this_site.followers }} {% trans _('Seguidores') %}</span>
                 </div>
 
+                {% if this_site_properties.message %}
                 <div class="pull-right border-left">
-                    {% if this_site_properties.message %}
                     <a href="#" class="show-sub-description action-link" title="{% trans _('Más Info') %}">
                         <i class="fa fa-info-circle"></i>
                         <span>{% trans _('Más Info') %}</span>
                     </a>
-                    {% endif %}
                 </div>
+                {% endif %}
 
                 <div class="pull-right">
                     {% exec print_follow_sub this_site.id as dummy %}

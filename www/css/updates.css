@@ -410,10 +410,15 @@ a.action-link span {
 .action-links {
     background-image: linear-gradient(-90deg, #FBFBFB 0%, #F8F8F8 48%, #F4F4F4 100%);
     border-bottom: 1px solid #d8d8d8;
-    padding: 8px;
+    padding: 6px;
     text-align: center;
     font-weight: 600;
     vertical-align: middle;
+}
+
+.action-links * {
+    line-height: 15px;
+    font-size: 11px;
 }
 
 .action-links a.action-link, .action-links .action-text, .action-links a.action-link:link,
@@ -421,7 +426,6 @@ a.action-link span {
     background: none;
     border: none;
     color: #4A4A4A;
-    line-height: 15px;
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -435,8 +439,9 @@ a.action-link span {
     color: #FD6014;
 }
 
-#header-sub {
+#header-mobile #header-sub {
     position: relative;
+    height: 30px;
 }
 
 #header-sub .edit {
@@ -652,12 +657,14 @@ a.action-link span {
 
 .subs-listing .logo {
     width: 70px;
+    padding: 0 5px;
 }
 
 .subs-listing .name {
     color: #4A4A4A;
     font-size: 13px;
     text-align: left;
+    overflow: hidden;
 }
 
 .subs-listing .name a {
