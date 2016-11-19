@@ -221,7 +221,12 @@
 			</div>
 
 			<div class="form-group">
-				<label for="rules" class="title title-inline">{% trans _('Reglas para el envío') %}</label><br />
+				<label for="rules" class="title title-inline">
+					{% trans _('Reglas para el envío') %}
+
+					<i class="fa fa-question-circle help" data-toggle="tooltip" title="{% trans _("Este texto se muestra a los usuarios que quieren enviar una noticia. Explica aquí las normas de la sección.") %}"></i>
+				</label><br />
+
 				<textarea maxlength="300" name="rules" id="rules" class="form-control block">{{ extended.rules }}</textarea>
 			</div>
 
