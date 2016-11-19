@@ -118,9 +118,33 @@
         $description.slideToggle();
     });
 
-    $('.form-search .input-filter').on('change', function(e) {
-        window.location = base_url + 'subs?' + $(this).val();
-    });
+    var $formSubsSearch = $('#form-subs-search');
+
+    if ($formSubsSearch.length) {
+        var $inputSearch = $('.input-search', $formSubsSearch);
+
+        $.get(base_url + 'cache/subs.json', function(data){
+            $inputSearch.typeahead({
+                source: data,
+                fitToElement: true,
+                displayText: function(item) {
+                    return '<div class="name">' + item.name + '</div><div class="description">' + item.name_long + '</div>';
+                },
+                highlighter: function(item) {
+                    return item;
+                },
+                afterSelect: function(item) {
+                    $inputSearch.val(item.name);
+
+                    window.location = base_url + 'm/' + item.name;
+                }
+            });
+        },'json');
+
+        $('.input-filter', $formSubsSearch).on('change', function(e) {
+            window.location = base_url + 'subs?' + $(this).val();
+        });
+    }
 
     $('[data-toggle="tooltip"]').tooltip();
 })(jQuery);

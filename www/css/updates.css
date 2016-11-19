@@ -343,6 +343,29 @@
     background-color: #f85a2c;
 }
 
+.typeahead .dropdown-item .name {
+    color: #FF6600;
+}
+
+.typeahead > .active > .dropdown-item,
+.typeahead > .active > .dropdown-item:hover,
+.typeahead > .active > .dropdown-item:focus {
+    background-color: #FF6600;
+}
+
+.typeahead > .active > .dropdown-item .name {
+    color: white;
+    font-weight: 700;
+}
+
+.typeahead .dropdown-item .description {
+    color: #4A4A4A;
+}
+
+.typeahead > .active > .dropdown-item .description {
+    color: white;
+}
+
 .separator {
     display: table;
     margin: 20px 10px;

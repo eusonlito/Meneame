@@ -13,10 +13,8 @@
 		</h1>
 
 		<form class="form form-edit" method="post" autocomplete="off" enctype="multipart/form-data">
-			{% if errors %}
-			{% for e in errors %}
-			<div class="alert alert-danger">{{ e }}</div>
-			{% endfor %}
+			{% if error %}
+			<div class="alert alert-danger">{{ error }}</div>
 			{% endif %}
 
 			<input type="hidden" name="id" value="{{ sub.id }}"/>
