@@ -882,6 +882,12 @@ input[type="email"].form-control, input[type="url"].form-control, input[type="se
         font-size: 15px;
     }
 
+    .form.form-edit .footer .btn.btn-mnm {
+        display: block;
+        width: 100%;
+        padding: 8px;
+    }
+
     .social-buttons .icon {
         display: none;
     }
