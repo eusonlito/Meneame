@@ -42,54 +42,62 @@ echo '</div>';
 
 switch ($option) {
 	case 0:
-		$subs = SitesMgr::get_subscriptions($current_user->user_id);
+		$all_subs = SitesMgr::get_subscriptions($current_user->user_id);
+
 		break;
 	case 1:
-		$sql = "select subs.*, user_id, user_login, user_avatar, count(*) as c from subs LEFT JOIN users ON (user_id = owner), sub_statuses where date > date_sub(now(), interval 5 day) and subs.id = sub_statuses.id and sub_statuses.id = sub_statuses.origen and sub_statuses.status = 'published' and subs.sub = 1 group by subs.id order by c desc limit 50";
-		$subs = $db->get_results($sql);
+		$sql = 'SELECT subs.*, user_id, user_login, user_avatar, COUNT(*) AS c FROM subs LEFT JOIN users ON (user_id = owner), sub_statuses WHERE date > DATE_SUB(NOW(), INTERVAL 5 DAY) AND subs.id = sub_statuses.id AND sub_statuses.id = sub_statuses.origen AND sub_statuses.status = "published" AND subs.sub = 1 AND subs.enabled = 1 GROUP BY subs.id ORDER BY c DESC LIMIT 50;';
+		$all_subs = $db->get_results($sql);
+
 		break;
 	default:
-		$chars = $db->get_col('SELECT DISTINCT(LEFT(UCASE(name), 1)) FROM subs');
+		$chars = $db->get_col('SELECT DISTINCT(LEFT(UCASE(name), 1)) FROM subs WHERE enabled = 1;');
 
 		if (!$q && !empty($_GET['c'])) {
 			$char_selected = preg_replace('/[^A-Z]/', '', substr($_GET['c'], 0, 1));
 		}
 
+		$extra = 'subs.enabled = 1 AND ';
+
 		if ($q) {
 			$q_sql = '%'.str_replace(' ', '%', $q).'%';
-			$extra = '(subs.name LIKE "'.$q_sql.'" OR subs.name_long LIKE "'.$q_sql.'") AND ';
+			$extra .= '(subs.name LIKE "'.$q_sql.'" OR subs.name_long LIKE "'.$q_sql.'") AND ';
 		} elseif ($char_selected) {
-			$extra = 'subs.name LIKE "'.$char_selected.'%" AND ';
+			$extra .= 'subs.name LIKE "'.$char_selected.'%" AND ';
 		}
 
 		$rows = $db->get_var('SELECT COUNT(*) FROM subs WHERE '.$extra.' subs.sub = 1 AND created_from = '.SitesMgr::my_id());
 
 		$page_size = 20;
 		$page = get_current_page();
-		$offset=($page-1)*$page_size;
+		$offset = ($page -1 ) * $page_size;
 
-		$sql = "select subs.*, user_id, user_login, user_avatar from subs, users where $extra subs.sub = 1 and created_from = ".SitesMgr::my_id()." and user_id = owner order by name asc limit $offset, $page_size";
-		$subs = $db->get_results($sql);
+		$sql = 'SELECT subs.*, user_id, user_login, user_avatar FROM subs, users WHERE '.$extra.' subs.sub = 1 AND created_from = "'.SitesMgr::my_id().'" AND user_id = owner ORDER BY name ASC LIMIT '.$offset.', '.$page_size.';';
+		$all_subs = $db->get_results($sql);
 }
 
-$all_subs = $db->get_results($sql);
-$subs_followers_counter = $db->get_results("select subs.id, count(*) as c from subs, prefs where pref_key = 'sub_follow' and subs.id = pref_value group by subs.id order by c desc;");
+$ids_subs = array_map(function($row) {
+	return (int)$row->id;
+}, $all_subs);
+
+$followers = $db->get_results('SELECT subs.id, COUNT(*) AS c FROM subs, prefs WHERE subs.id IN ('.implode(',', $ids_subs).') AND pref_key = "sub_follow" AND subs.id = pref_value GROUP BY subs.id ORDER BY c DESC;');
+
 $subs = array();
 
-foreach ($all_subs as $s) {
-	foreach ($subs_followers_counter as $sub_counter) {
-		if ($s->id == $sub_counter->id) {
-			$s->followers = $sub_counter->c;
+foreach ($all_subs as $sub) {
+	if (!$sub->enabled) {
+		continue;
+	}
+
+	$sub->followers = 0;
+
+	foreach ($followers as $row) {
+		if ($sub->id == $row->id) {
+			$sub->followers = $row->c;
 		}
 	}
 
-	if (!isset($s->followers)) {
-		$s->followers=0;
-	}
-
-	if ($s->enabled) {
-		$subs[] = $s;
-	}
+	$subs[] = $sub;
 }
 
 $can_edit = (SitesMgr::my_id() == 1 && SitesMgr::can_edit(0));
