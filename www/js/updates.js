@@ -123,23 +123,28 @@
     if ($formSubsSearch.length) {
         var $inputSearch = $('.input-search', $formSubsSearch);
 
-        $.get(base_url + 'cache/subs.json', function(data){
-            $inputSearch.typeahead({
-                source: data,
-                fitToElement: true,
-                displayText: function(item) {
-                    return '<div class="name">' + item.name + '</div><div class="description">' + item.name_long + '</div>';
-                },
-                highlighter: function(item) {
-                    return item;
-                },
-                afterSelect: function(item) {
-                    $inputSearch.val(item.name);
+        $.ajax({
+            url: base_url + 'cache/subs.json',
+            cache: false,
+            dataType: 'json',
+            success: function(data) {
+                $inputSearch.typeahead({
+                    source: data,
+                    fitToElement: true,
+                    displayText: function(item) {
+                        return '<div class="name">' + item.name + '</div><div class="description">' + item.name_long + '</div>';
+                    },
+                    highlighter: function(item) {
+                        return item;
+                    },
+                    afterSelect: function(item) {
+                        $inputSearch.val(item.name);
 
-                    window.location = base_url + 'm/' + item.name;
-                }
-            });
-        },'json');
+                        window.location = base_url + 'm/' + item.name;
+                    }
+                });
+            }
+        });
 
         $('.input-filter', $formSubsSearch).on('change', function(e) {
             window.location = base_url + 'subs?' + $(this).val();
