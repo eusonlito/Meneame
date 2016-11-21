@@ -1,12 +1,12 @@
 <section class="section section-medium section-with-sidebar">
 	{% if can_edit %}
-	<a href="{{ globals.base_url }}subedit" class="action-link pull-right">
+	<a href="{{ globals.base_url }}subedit" class="action-link action-link-large pull-right">
 		<i class="fa fa-plus"></i>
-		{% trans _('crear sub') %}
+		<span>{% trans _('crear sub') %}</span>
 	</a>
 	{% endif %}
 
-	<h1 class="text-center">{% trans _('Subs') %}</h1>
+	<h1>{% trans _('Subs') %}</h1>
 
 	<p class="intro intro-large">{% trans _('Los subs son secciones temáticas que te permiten personalizar las noticias que ves. Selecciona los temas que te interesan y podrás verlo en tu portada de suscripciones.') %}</p>
 

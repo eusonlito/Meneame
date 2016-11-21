@@ -290,7 +290,7 @@
 
 .social-buttons {
     text-align: center;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .social-buttons a {
@@ -299,9 +299,8 @@
     border-radius: 4px;
     color: white;
     font-size: 15px;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     margin-bottom: 10px;
-    font-weight: 300;
 }
 
 .social-buttons a:hover {
@@ -413,6 +412,8 @@ a.action-link, .action-text {
     text-transform: uppercase;
     font-size: 13px;
     vertical-align: middle;
+    line-height: 15px;
+    text-align: center;
     background-color: #FE6117;
     color: white;
 }
@@ -422,12 +423,20 @@ a.action-link:link, a.action-link:visited, a.action-link:hover {
     text-decoration: none;
 }
 
+a.action-link.action-link-large, .action-text.action-text-large {
+    padding: 4px 15px;
+}
+
 a.action-link .fa, a.action-text .fa {
+    display: inline-block;
     font-size: 15px;
+    vertical-align: middle;
 }
 
 a.action-link span {
+    display: inline-block;
     margin-left: 4px;
+    vertical-align: middle;
 }
 
 .action-links {
@@ -451,11 +460,6 @@ a.action-link span {
     color: #4A4A4A;
     padding-top: 0;
     padding-bottom: 0;
-}
-
-.action-links .action-link .fa, .action-links .action-link span {
-    display: inline-block;
-    vertical-align: middle;
 }
 
 .action-links .action-text {
@@ -699,15 +703,16 @@ a.action-link span {
     width: 130px;
 }
 
+.subs-listing .actions .action-link {
+    display: block;
+    width: 100%;
+    padding: 4px 15px;
+}
+
 .subs-listing .actions .followers {
     display: none;
     margin-bottom: 2px;
     font-size: 13px;
-}
-
-.subs-listing .actions a.action-link {
-    width: 120px;
-    padding: 4px 0;
 }
 
 .subs-listing .actions a.following-no {
@@ -822,6 +827,10 @@ input[type="email"].form-control, input[type="url"].form-control, input[type="se
         padding: 10px 0;
     }
 
+    .subs-listing td.name {
+	padding: 10px 10px 10px 5px;
+    }
+
     .subs-listing .actions {
         width: 100px;
     }
@@ -926,8 +935,13 @@ input[type="email"].form-control, input[type="url"].form-control, input[type="se
 }
 
 @media (max-width: 340px) {
-    .action-links a.action-link, .action-links .action-text {
+    .action-links * {
         font-size: 11px;
         line-height: 11px;
+    }
+
+    .subs-listing .actions .action-link {
+        font-size: 12px;
+        line-height: 12px;
     }
 }
