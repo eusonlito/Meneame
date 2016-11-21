@@ -51,7 +51,7 @@ switch ($option) {
 
 		break;
 	default:
-		$chars = $db->get_col('SELECT DISTINCT(LEFT(UCASE(name), 1)) FROM subs WHERE enabled = 1;');
+		$chars = $db->get_col('SELECT DISTINCT(LEFT(UCASE(name), 1)) letter FROM subs WHERE enabled = 1 ORDER BY letter ASC;');
 
 		if (!$q && !empty($_GET['c'])) {
 			$char_selected = preg_replace('/[^A-Z]/', '', substr($_GET['c'], 0, 1));
